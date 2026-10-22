@@ -12,6 +12,7 @@ interface Props {
   cols?: number;
   impression?: boolean;
   eager?: boolean;
+  fit?: "cover" | "contain";
   class?: string;
 }
 const {
@@ -23,6 +24,7 @@ const {
   cols = 3,
   impression = true,
   eager = false,
+  fit = "cover",
   class: cls,
 } = Astro.props;
 ---
@@ -36,7 +38,7 @@ const {
         loading={eager ? "eager" : "lazy"}
         fetchpriority={eager ? "high" : undefined}
         decoding="async"
-        class="w-full h-auto object-cover"
+        class:list={["w-full h-auto", fit === "contain" ? "object-contain" : "object-cover"]}
         style={`aspect-ratio:${ratio}`}
       />
     ) : (

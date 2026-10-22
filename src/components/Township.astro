@@ -34,15 +34,19 @@ const points = [
     </div>
   </div>
 
+  <!-- Kept within the content width so the 2000px render is never upscaled. -->
+  <div class="px-gutter">
   <ImageSlot
     src="/assets/sjx-streetscape.webp"
     alt="Subang Jaya Xchange streetscape with cafes, trees and a landscaped walkway"
-    ratio="12/5"
-    need="SJX streetscape panorama, 2400x1000, no text"
+    ratio="16/9"
+    fit="contain"
+    need="SJX streetscape, 2000x1125, no text"
     tiles={["t-leaf", "t-arcs", "t-circle", "t-stripes", "t-dots", "t-quarter", "t-split", "t-moon", "t-lattice", "t-half", "t-hstripes", "t-leaf"]}
     cols={12}
-    class="[&_figcaption]:px-gutter"
+    class="max-w-wrap mx-auto"
   />
+  </div>
 
   <div class="px-gutter">
     <ul class="max-w-wrap mx-auto mt-10 lg:mt-14 grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">

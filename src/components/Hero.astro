@@ -1,53 +1,65 @@
 ---
 import { Icon } from "astro-icon/components";
-import ImageSlot from "./ImageSlot.astro";
 import PatternBand from "./PatternBand.astro";
 import { ctaLabel, registerMessage, waLink } from "../config/site";
 ---
 
+<!-- Full-bleed feature hero: the towers render fills the first screen and
+     the copy sits over a scrim on the left, where the frame is darkest. -->
 <section id="hero-media" class="relative">
-  <div
-    class="max-w-wrap mx-auto px-gutter pt-12 pb-14 lg:pt-16 lg:pb-16 grid gap-10 lg:gap-16 lg:grid-cols-[1.05fr_1fr] items-center lg:min-h-[calc(100dvh-216px)]"
-  >
-    <div class="flex flex-col items-start gap-7 hero-in">
-      <p class="text-[13px] font-semibold uppercase tracking-[0.2em] text-accent">
-        Trybe Residences · Phase 2 now launching
-      </p>
-      <h1
-        class="text-[clamp(44px,6.2vw,88px)] font-semibold leading-[1] tracking-[-0.03em]"
-      >
-        Subang Jaya's<br /><span class="text-accent">new beat.</span>
-      </h1>
-      <p class="text-[clamp(17px,1.5vw,20px)] leading-[1.55] text-fg-muted max-w-[46ch]">
-        Freehold 2 and 3-bedroom homes at Subang Jaya Xchange, the largest TOD
-        township plan, walkway-linked to <span class="whitespace-nowrap">USJ7 LRT-BRT.</span>
-      </p>
-      <div class="flex flex-wrap gap-3 pt-1">
-        <a
-          href={waLink(registerMessage)}
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-          class="btn-primary"
+  <div class="relative min-h-[max(640px,calc(100dvh-112px))] flex items-end overflow-hidden">
+    <img
+      src="/assets/hero-towers.webp"
+      alt="Hype 2 (Trybe) Residences towers and guardhouse at Subang Jaya Xchange at sunset"
+      width="2000"
+      height="1125"
+      fetchpriority="high"
+      decoding="async"
+      class="absolute inset-0 w-full h-full object-cover object-[60%_50%] hero-zoom"
+    />
+    <!-- Scrims: left for the copy, bottom to blend into the page. -->
+    <div
+      class="absolute inset-0 bg-[linear-gradient(90deg,rgba(22,22,20,0.92)_0%,rgba(22,22,20,0.7)_32%,rgba(22,22,20,0.1)_62%,rgba(22,22,20,0)_100%)] max-lg:bg-[linear-gradient(0deg,rgba(22,22,20,0.96)_0%,rgba(22,22,20,0.82)_55%,rgba(22,22,20,0.2)_85%)]"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-bg to-transparent"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative w-full max-w-wrap mx-auto px-gutter pb-14 lg:pb-20 pt-24">
+      <div class="flex flex-col items-start gap-7 hero-in">
+        <p class="text-[13px] font-semibold uppercase tracking-[0.2em] text-accent">
+          Trybe Residences · Phase 2 now launching
+        </p>
+        <h1
+          class="text-[clamp(48px,8vw,124px)] font-semibold leading-[0.95] tracking-[-0.035em] text-fg [text-shadow:0_2px_30px_rgba(22,22,20,0.45)]"
         >
-          <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5" aria-hidden="true" />
-          {ctaLabel}
-        </a>
-        <a href="#residences" class="btn-ghost">
-          View Layouts
-          <Icon name="ph:arrow-right" class="w-4 h-4" aria-hidden="true" />
-        </a>
+          <span class="block whitespace-nowrap">Subang Jaya's</span><span class="block whitespace-nowrap text-accent">new beat.</span>
+        </h1>
+        <p class="text-[clamp(17px,1.5vw,21px)] leading-[1.55] text-fg/90 max-w-[46ch]">
+          Freehold 2 and 3-bedroom homes at Subang Jaya Xchange, the largest TOD
+          township plan, walkway-linked to <span class="whitespace-nowrap">USJ7 LRT-BRT.</span>
+        </p>
+        <div class="flex flex-wrap gap-3 pt-1">
+          <a
+            href={waLink(registerMessage)}
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            class="btn-primary"
+          >
+            <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5 text-white" aria-hidden="true" />
+            {ctaLabel}
+          </a>
+          <a href="#residences" class="btn-ghost bg-bg/40 backdrop-blur-sm">
+            View Layouts
+            <Icon name="ph:arrow-right" class="w-4 h-4" aria-hidden="true" />
+          </a>
+        </div>
       </div>
     </div>
 
-    <ImageSlot
-      src="/assets/hero-towers.webp"
-      alt="Hype 2 (Trybe) Residences towers and guardhouse at Subang Jaya Xchange at sunset"
-      ratio="5/4"
-      need="hero render of the two towers, 1600x1280, no text"
-      tiles={["t-quarter", "t-circle", "t-stripes", "t-leaf", "t-arcs", "t-split", "t-moon", "t-half", "t-dots", "t-lattice"]}
-      cols={5}
-      eager
-    />
+    <p class="absolute right-gutter top-4 lg:top-auto lg:bottom-5 text-[12px] text-fg/70">Artist's impression</p>
   </div>
   <PatternBand moving />
 </section>

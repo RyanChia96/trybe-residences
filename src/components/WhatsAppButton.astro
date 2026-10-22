@@ -4,14 +4,14 @@ import { registerMessage, waLink } from "../config/site";
 ---
 
 <!-- WhatsApp's own green is kept here: it is the recognisable mark for the
-     channel, not a page accent. The glyph is off-black because white on
-     #25D366 is only 2:1. -->
+     channel, not a page accent. White glyph by request (2:1 on #25D366,
+     below the 3:1 non-text contrast guideline). -->
 <a
   href={waLink(registerMessage)}
   target="_blank"
   rel="nofollow noopener noreferrer"
   aria-label="Chat with us on WhatsApp"
-  class="fixed bottom-[clamp(18px,4vw,32px)] right-[clamp(18px,4vw,32px)] z-float flex items-center justify-center w-[58px] h-[58px] rounded-full bg-[#25D366] text-bg shadow-[0_10px_28px_rgba(10,10,8,0.5)] transition-transform duration-200 hover:scale-[1.06] active:scale-[0.97]"
+  class="fixed bottom-[clamp(18px,4vw,32px)] right-[clamp(18px,4vw,32px)] z-float flex items-center justify-center w-[58px] h-[58px] rounded-full bg-[#25D366] text-white shadow-[0_10px_28px_rgba(10,10,8,0.5)] transition-transform duration-200 hover:scale-[1.06] active:scale-[0.97]"
 >
   <Icon name="ph:whatsapp-logo-fill" class="w-[30px] h-[30px]" aria-hidden="true" />
 </a>

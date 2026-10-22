@@ -123,6 +123,17 @@
     }
   }
 
+  /* Hero image settles from a slight zoom on load, drawing the eye to the
+     property before the copy. */
+  .hero-zoom {
+    animation: hero-zoom 2.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  @keyframes hero-zoom {
+    from {
+      transform: scale(1.06);
+    }
+  }
+
   /* The single marquee on the page: the pattern band under the hero. */
   .band-track {
     animation: band 70s linear infinite;
