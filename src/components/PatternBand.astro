@@ -1,0 +1,24 @@
+---
+// The Bauhaus tile strip, the site's signature motif. `moving` turns on the
+// slow drift; only one band on the page may move (marquee max one).
+interface Props {
+  moving?: boolean;
+  size?: string;
+}
+const { moving = false, size = "clamp(56px, 7vw, 96px)" } = Astro.props;
+
+const tiles = [
+  "t-leaf", "t-circle", "t-dots", "t-quarter", "t-arcs", "t-lattice", "t-stripes",
+  "t-split", "t-moon", "t-half", "t-hstripes", "t-circle", "t-leaf", "t-lattice",
+];
+// Each half must be wider than a large screen so the loop never shows a gap;
+// the track is two identical halves and slides by exactly one half.
+const half = [...tiles, ...tiles];
+const run = [...half, ...half];
+---
+
+<div class="overflow-hidden" aria-hidden="true">
+  <div class:list={["flex w-max", moving && "band-track"]}>
+    {run.map((t) => <div class:list={["tile flex-none", t]} style={`width:${size}`} />)}
+  </div>
+</div>

@@ -1,25 +1,23 @@
 ---
 import LegalLayout from "../layouts/LegalLayout.astro";
 import {
-  project,
-  developer,
   agency,
   agent,
   independenceNotice,
   materialsNotice,
 } from "../config/site";
 
-const lastUpdated = "18 August 2026";
+const lastUpdated = "22 October 2026";
 ---
 
 <LegalLayout
-  title={`Terms of Use | ${project.name}`}
-  description={`Terms of use for the independent marketing website for ${project.name}, operated by ${agent.name} (${agent.ren}) of ${agency.name}.`}
+  title={`Terms of Use | Trybe Residences, Subang Jaya`}
+  description={`Terms of use for the independent marketing website operated by ${agent.name} (${agent.ren}) of ${agency.name}.`}
   heading="Terms of Use"
   lastUpdated={lastUpdated}
   path="/terms/"
 >
-  <div class="bg-paper rounded-[8px] p-6 text-[14.5px] leading-[1.7] text-ink">
+  <div class="bg-surface border border-line p-6 text-[15px] leading-[1.7] text-fg">
     <p class="font-semibold mb-2">Important notice</p>
     <p>{independenceNotice}</p>
   </div>
@@ -30,23 +28,25 @@ const lastUpdated = "18 August 2026";
       This website is operated independently by {agent.name} ({agent.ren}), a
       registered Real Estate Negotiator with {agency.name}{
         agency.companyNo ? ` (${agency.companyNo})` : ""
-      }, a Registered Estate Agency holding BOVAEP licence {agency.licence}. The
-      developer of the featured development is {developer.name}. We are not
-      the developer and do not act as the developer's official channel.
+      }, a Registered Estate Agency holding BOVAEP licence {agency.licence}. We
+      are not the developer of the featured development and do not act as the
+      developer's official channel.
     </p>
   </section>
 
   <section>
     <h2>2. Information accuracy</h2>
     <p>
-      Information on this website — including images, layouts, dimensions,
+      Information on this website (including images, layouts, dimensions,
       specifications, facilities, proximities, availability and any indicative
-      pricing — is compiled from materials supplied by the developer, public
-      records and authorised third parties. While reasonable efforts are made to
-      keep it accurate, all information is provided for general reference only,
-      may change without notice, and does not constitute financial, legal or
-      professional advice. Prospective purchasers should verify all details
-      directly with the developer before making any decision.
+      pricing) is compiled from the developer's released information, public
+      records and authorised third parties. All visuals shown are illustrative
+      artist's impressions only and do not depict the actual units. While
+      reasonable efforts are made to keep it accurate, all information is
+      provided for general reference only, may change without notice, and does
+      not constitute financial, legal or professional advice. Prospective
+      purchasers should verify all details directly with the developer before
+      making any decision.
     </p>
   </section>
 
@@ -62,7 +62,7 @@ const lastUpdated = "18 August 2026";
       by WhatsApp, telephone or email, you consent to being contacted by {
         agent.name
       } ({agent.ren}) of {agency.name}, or an authorised representative, in
-      connection with your enquiry about {project.name}. You may withdraw that
+      connection with your enquiry about this development. You may withdraw that
       consent and ask us to stop contacting you at any time by replying
       &ldquo;STOP&rdquo; on WhatsApp or emailing <a
         href={`mailto:${agent.email}`}>{agent.email}</a
@@ -83,12 +83,12 @@ const lastUpdated = "18 August 2026";
   <section>
     <h2>6. Intellectual property</h2>
     <p>
-      Project names, renders, plans and marketing materials referenced on this
-      website remain the property of their respective owners, including the
-      developer, and are used here for the purpose of marketing the development
-      as an appointed agency. Third-party names such as neighbouring buildings,
-      schools and transport nodes are referenced descriptively for location
-      context only and imply no affiliation or endorsement.
+      Renders, plans and marketing materials referenced on this website remain
+      the property of their respective owners, including the developer, and are
+      used here for the purpose of marketing the development as an appointed
+      agency. Third-party names such as neighbouring buildings, schools and
+      transport nodes are referenced descriptively for location context only and
+      imply no affiliation or endorsement.
     </p>
   </section>
 
@@ -132,10 +132,10 @@ const lastUpdated = "18 August 2026";
 
   <section>
     <h2>11. Contact</h2>
-    <div class="bg-paper rounded-[8px] p-6 text-[14.5px] leading-[1.7] text-ink">
+    <div class="bg-surface border border-line p-6 text-[15px] leading-[1.7] text-fg">
       <p class="font-semibold">{agent.name} · {agent.ren}</p>
-      <p class="text-muted">
-        {agency.name} — Registered Estate Agency, BOVAEP {agency.licence}
+      <p class="text-fg-muted">
+        {agency.name}, Registered Estate Agency, BOVAEP {agency.licence}
       </p>
       <p class="mt-2">{agency.address}</p>
       <p class="mt-2">

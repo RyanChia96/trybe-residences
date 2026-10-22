@@ -1,170 +1,87 @@
 ---
-import { project, waLink } from "../config/site";
-
-const tagStyles = {
-  "tag-gold": "bg-accent text-white",
-  "tag-dark": "bg-forest text-forest-text",
-};
+import { Icon } from "astro-icon/components";
+import ImageSlot from "./ImageSlot.astro";
+import { ctaLabel, registerMessage, waLink } from "../config/site";
 
 const units = [
   {
-    img: "/assets/floorplan-type-a.webp",
-    alt: "Type A floorplan — 4 bedrooms, 4 bathrooms",
-    tag: "Largest layout",
-    tagClass: "tag-gold",
-    name: "Type A",
-    size: "1,880",
-    specs: "4 Bedrooms · 4 Bathrooms · 3 Carparks",
-    foot: "Private lift lobby, 2m wide · Car park storage*",
+    name: "Type A / A-M",
+    size: "730",
+    beds: "2 bedrooms",
+    baths: "2 bathrooms",
+    parking: "1 to 2 car park bays",
+    tiles: ["t-quarter", "t-dots", "t-leaf", "t-split"],
   },
   {
-    img: "/assets/floorplan-type-b1.webp",
-    alt: "Type B1 floorplan — 3 bedrooms, 4 bathrooms",
-    tag: "Extra bath option",
-    tagClass: "tag-dark",
-    name: "Type B1",
-    size: "1,574",
-    specs: "3 Bedrooms · 4 Bathrooms · 2–3 Carparks",
-    foot: "Private lift lobby, 2m wide · Car park storage*",
-  },
-  {
-    img: "/assets/floorplan-type-c1.webp",
-    alt: "Type C1 floorplan — 3 bedrooms, 2 bathrooms",
-    tag: "Entry layout",
-    tagClass: "tag-dark",
-    name: "Type C1",
-    size: "1,165",
-    specs: "3 Bedrooms · 2 Bathrooms · 2 Carparks",
-    foot: "Private lift lobby, 1.8m wide · Balcony",
+    name: "Type B / B-M",
+    size: "920",
+    beds: "3 bedrooms",
+    baths: "2 bathrooms",
+    parking: "2 car park bays",
+    tiles: ["t-circle", "t-lattice", "t-moon", "t-stripes"],
   },
 ];
 ---
 
-<section id="residences" class="py-20 px-gutter">
+<section id="residences" class="py-16 lg:py-24 px-gutter">
   <div class="max-w-wrap mx-auto">
-    <p
-      class="text-[13px] tracking-[0.3em] uppercase text-muted font-semibold mb-[clamp(24px,3vw,40px)]"
-    >
-      layouts
-    </p>
-    <div
-      class="flex flex-wrap items-end justify-between gap-6 mb-[clamp(44px,6vw,72px)]"
-    >
-      <h2
-        class="font-inter font-semibold text-[clamp(26px,3.2vw,42px)] leading-[1.15] tracking-[-0.008em] max-w-[16ch]"
-      >
-        Three layouts, each with its own private lift.
+    <div class="max-w-[720px] mb-10 lg:mb-14" data-reveal>
+      <h2 class="text-[clamp(32px,4vw,52px)] font-semibold leading-[1.05] tracking-[-0.02em]">
+        Two layouts, both with a hackable wall
       </h2>
-      <p class="text-[15.5px] text-body max-w-[36ch] leading-[1.7] font-light">
-        Built-ups from 1,165 to 1,880 sqft, each served by its own private lift
-        lobby. Detailed floor plans are released by the developer on enquiry.
+      <p class="mt-4 text-[17px] leading-[1.6] text-fg-muted max-w-[56ch]">
+        Remove the marked wall to open the living hall, or keep it for an
+        extra room. Your call, after handover.
       </p>
     </div>
 
-    <div
-      class="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[clamp(24px,3vw,40px)]"
-    >
+    <div class="grid gap-3 md:grid-cols-2">
       {
-        units.map((u) => (
-          <article class="flex flex-col">
-            <a
-              href={waLink(
-                `Hi Chloe, please send me the ${u.name} (${u.size} sqft) floor plan for ${project.name}.`,
-              )}
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-              class="group relative rounded-[6px] overflow-hidden h-[clamp(260px,26vw,340px)] bg-paper-2 block"
-              aria-label={`Request the ${u.name} floor plan on WhatsApp`}
-            >
-              <img
-                class="w-full h-full object-contain blur-sm scale-110 select-none pointer-events-none"
-                src={u.img}
-                alt={u.alt}
-                loading="lazy"
+        units.map((u, i) => (
+          <article class="bg-surface flex flex-col" data-reveal style={`--i:${i}`}>
+            <div class="p-5 lg:p-6 bg-fg/[0.04]">
+              <ImageSlot
+                alt={`${u.name} floor plan, ${u.size} sqft, with hackable wall marked`}
+                ratio="4/3"
+                need={`${u.name} floor plan, 1600x1200`}
+                tiles={u.tiles}
+                cols={4}
+                impression={false}
               />
-              {/* The plan is deliberately withheld — say so plainly rather than
-                  letting a blurred image read as a bait. */}
-              <span class="absolute inset-0 flex flex-col items-center justify-center gap-2.5 bg-ink/[0.34] text-white transition-colors duration-200 group-hover:bg-ink/[0.44]">
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <rect x="4" y="11" width="16" height="9" rx="1.5" />
-                  <path d="M8 11V8a4 4 0 018 0v3" />
-                </svg>
-                <span class="text-[11.5px] font-semibold tracking-[0.16em] uppercase">
-                  Floor plan on request
-                </span>
-              </span>
-              <span
-                class:list={[
-                  "absolute top-4 left-4 text-[11px] font-bold tracking-[0.1em] uppercase px-[13px] py-1.5 rounded-[2px]",
-                  tagStyles[u.tagClass],
-                ]}
-              >
-                {u.tag}
-              </span>
-            </a>
-            <div class="pt-[26px] px-1 flex flex-col flex-1">
-              <div class="flex items-baseline justify-between gap-3">
-                <h3 class="font-serif text-[32px] font-semibold leading-none">
-                  {u.name}
-                </h3>
-                <span class="font-serif text-2xl font-semibold text-accent">
-                  {u.size}{" "}
-                  <span class="text-sm text-muted font-sans font-medium">
-                    sqft
-                  </span>
-                </span>
+            </div>
+            <div class="p-7 lg:p-9 flex flex-col gap-6">
+              <div class="flex flex-wrap items-end justify-between gap-4">
+                <h3 class="text-[28px] font-semibold leading-none">{u.name}</h3>
+                <p class="leading-none">
+                  <span class="text-[clamp(44px,5vw,64px)] font-semibold text-accent tracking-[-0.02em]">{u.size}</span>
+                  <span class="text-[16px] text-fg-muted ml-1.5">sqft built-up</span>
+                </p>
               </div>
-              <p class="text-sm text-muted-2 mt-2.5 tracking-[0.04em]">
-                {u.specs}
-              </p>
-              <p class="text-sm text-body mt-2">{u.foot}</p>
-              <a
-                href={waLink(
-                  `Hi Chloe, please send me the ${u.name} (${u.size} sqft) floor plan for ${project.name}.`,
-                )}
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                class="inline-flex items-center gap-2.5 font-semibold tracking-[0.14em] uppercase text-ink border-b border-accent-hover transition-colors duration-200 hover:text-accent-hover mt-5 text-[12.5px] pb-[5px] self-start"
-              >
-                Request Floor Plan
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <>
-                    <path d="M5 12h14" />
-                    <path d="M13 6l6 6-6 6" />
-                  </>
-                </svg>
-              </a>
+              <ul class="flex flex-wrap gap-x-7 gap-y-3 text-[15.5px] text-fg-muted">
+                <li class="flex items-center gap-2"><Icon name="ph:bed" class="w-5 h-5 text-fg" aria-hidden="true" />{u.beds}</li>
+                <li class="flex items-center gap-2"><Icon name="ph:shower" class="w-5 h-5 text-fg" aria-hidden="true" />{u.baths}</li>
+                <li class="flex items-center gap-2"><Icon name="ph:car" class="w-5 h-5 text-fg" aria-hidden="true" />{u.parking}</li>
+              </ul>
             </div>
           </article>
         ))
       }
     </div>
-    <p
-      class="text-[13px] text-muted mt-[clamp(32px,4vw,48px)] leading-[1.6] max-w-[70ch]"
-    >
-      *Car park storage available for selected units. Built-up areas are
-      approximate and subject to final survey. All layouts and images are
-      artist's impressions and subject to variation by the developer and
-      relevant authorities.
-    </p>
+
+    <div class="mt-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <p class="text-[13px] text-fg-subtle leading-[1.6] max-w-[70ch]">
+        Built-up areas are approximate and subject to final survey. All layouts
+        are subject to variation by the developer and relevant authorities.
+      </p>
+      <a
+        href={waLink(registerMessage)}
+        target="_blank"
+        rel="nofollow noopener noreferrer"
+        class="btn-primary self-start md:self-auto"
+      >
+        <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5" aria-hidden="true" />
+        {ctaLabel}
+      </a>
+    </div>
   </div>
 </section>

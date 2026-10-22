@@ -2,11 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import PrivateLift from '../components/PrivateLift.astro';
-import LivingHall from '../components/LivingHall.astro';
-import SkySemiD from '../components/SkySemiD.astro';
-import Residences from '../components/Residences.astro';
+import WhyTrybe from '../components/WhyTrybe.astro';
+import Township from '../components/Township.astro';
 import Location from '../components/Location.astro';
+import Residences from '../components/Residences.astro';
+import Facilities from '../components/Facilities.astro';
+import Offer from '../components/Offer.astro';
 import Faq from '../components/Faq.astro';
 import EnquireContact from '../components/EnquireContact.astro';
 import Footer from '../components/Footer.astro';
@@ -15,14 +16,17 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 <Layout>
   <Header />
-  <Hero />
-  <PrivateLift />
-  <LivingHall />
-  <SkySemiD />
-  <Residences />
-  <Location />
-  <Faq />
-  <EnquireContact />
+  <main>
+    <Hero />
+    <WhyTrybe />
+    <Township />
+    <Location />
+    <Residences />
+    <Facilities />
+    <Offer />
+    <Faq />
+    <EnquireContact />
+  </main>
   <Footer />
   <WhatsAppButton />
 </Layout>

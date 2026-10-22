@@ -3,10 +3,133 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    color-scheme: dark;
+  }
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 88px;
   }
   body {
-    @apply font-sans text-ink bg-white antialiased overflow-x-hidden;
+    @apply font-sans text-fg bg-bg antialiased overflow-x-hidden;
+  }
+  /* Utilities like .grid would otherwise override the hidden attribute. */
+  [hidden] {
+    display: none !important;
+  }
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-accent;
+  }
+}
+
+@layer components {
+  /* Buttons. Labels are off-black on vermilion: white on #EF4A2B is only 3.7:1. */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2.5 whitespace-nowrap px-7 py-4 text-[15px] font-semibold tracking-[0.02em] transition-[background-color,color,transform] duration-200 active:scale-[0.98];
+  }
+  .btn-primary {
+    @apply btn bg-accent text-bg hover:bg-accent-hover;
+  }
+  .btn-ghost {
+    @apply btn border border-line-strong text-fg hover:border-fg;
+  }
+
+  /* ---------------------------------------------------------------------
+     Bauhaus tiles. Each is one geometric primitive (circle, half, quarter,
+     stripes, lattice, arcs, leaf) built from CSS gradients, sized by its
+     container. Used by PatternBand and as the stand-in for images that have
+     not been supplied yet.
+     --------------------------------------------------------------------- */
+  .tile {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+  }
+  .t-circle {
+    background: radial-gradient(circle at 50% 50%, theme(colors.bg) 0 33%, transparent 34%),
+      theme(colors.olive.DEFAULT);
+  }
+  .t-half {
+    background: radial-gradient(circle at 50% 100%, theme(colors.accent.DEFAULT) 0 49%, transparent 50%),
+      theme(colors.tile.slate);
+  }
+  .t-quarter {
+    background: radial-gradient(circle at 0 100%, theme(colors.tile.mustard) 0 70%, transparent 71%),
+      theme(colors.bg);
+  }
+  .t-stripes {
+    background: repeating-linear-gradient(90deg, theme(colors.accent.DEFAULT) 0 12.5%, theme(colors.tile.brown) 12.5% 25%);
+  }
+  .t-hstripes {
+    background: repeating-linear-gradient(0deg, theme(colors.accent.DEFAULT) 0 10%, theme(colors.tile.slate) 10% 20%);
+  }
+  .t-lattice {
+    background: repeating-linear-gradient(45deg, theme(colors.bg) 0 4%, transparent 4% 12%),
+      repeating-linear-gradient(-45deg, theme(colors.bg) 0 4%, transparent 4% 12%),
+      theme(colors.olive.DEFAULT);
+  }
+  .t-arcs {
+    background: repeating-radial-gradient(circle at 100% 100%, theme(colors.bg) 0 6%, theme(colors.tile.slate) 6% 12%);
+  }
+  .t-dots {
+    background: radial-gradient(circle, theme(colors.olive.DEFAULT) 0 38%, transparent 39%) 0 0 / 50% 50%,
+      theme(colors.tile.brown);
+  }
+  .t-split {
+    background: linear-gradient(135deg, theme(colors.tile.mustard) 50%, theme(colors.bg) 50%);
+  }
+  .t-leaf {
+    background: theme(colors.olive.DEFAULT);
+  }
+  .t-leaf::before {
+    content: "";
+    position: absolute;
+    inset: 16%;
+    background: theme(colors.accent.DEFAULT);
+    border-radius: 0 100%;
+  }
+  .t-moon {
+    background: radial-gradient(circle at 70% 50%, theme(colors.tile.slate) 0 36%, transparent 37%),
+      radial-gradient(circle at 50% 50%, theme(colors.fg.DEFAULT) 0 40%, transparent 41%),
+      theme(colors.tile.brown);
+  }
+}
+
+/* Scroll reveal: sections settle in as they enter, so the page reads in
+   order. Only armed when JS runs and the visitor allows motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--i, 0) * 70ms);
+  }
+  .js [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Hero entry on first paint. CSS-only so the LCP text never waits on JS. */
+  .hero-in {
+    animation: hero-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--i, 0) * 90ms);
+  }
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+  }
+
+  /* The single marquee on the page: the pattern band under the hero. */
+  .band-track {
+    animation: band 70s linear infinite;
+  }
+  @keyframes band {
+    to {
+      transform: translateX(-50%);
+    }
   }
 }

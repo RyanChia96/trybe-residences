@@ -13,8 +13,11 @@
   },
   "dependencies": {
     "@astrojs/vercel": "^9.0.5",
+    "@fontsource-variable/outfit": "^5.3.0",
+    "@iconify-json/ph": "^1.2.2",
     "@vercel/speed-insights": "^2.0.0",
-    "astro": "^5.13.0"
+    "astro": "^5.13.0",
+    "astro-icon": "^1.1.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",

@@ -1,102 +1,52 @@
 ---
-import { project, developer, waLink } from "../config/site";
-
-const slides = [
-  "/assets/hero-1.webp",
-  "/assets/hero-2.webp",
-  "/assets/hero-3.webp",
-];
-
-const enquireHref = waLink(
-  `Hi Chloe, I'd like details on ${project.name} — floor plans, pricing and availability.`,
-);
+import { Icon } from "astro-icon/components";
+import ImageSlot from "./ImageSlot.astro";
+import PatternBand from "./PatternBand.astro";
+import { ctaLabel, registerMessage, waLink } from "../config/site";
 ---
 
-<section
-  id="hero-media"
-  class="relative min-h-[828px] flex items-center overflow-hidden px-gutter pt-[46px] pb-[60px] bg-hero"
->
-  {
-    slides.map((src, i) => (
-      <div
-        data-slide
-        class:list={[
-          "absolute inset-0 bg-center bg-cover bg-no-repeat opacity-80 transition-opacity duration-[1600ms] ease-linear",
-          i === 0 ? "opacity-80" : "opacity-0",
-        ]}
-        style={`background-image:url('${src}')`}
-      />
-    ))
-  }
+<section id="hero-media" class="relative">
   <div
-    class="absolute inset-0 pointer-events-none"
-    style="background:linear-gradient(180deg, rgba(24,17,10,0.42) 0%, rgba(24,17,10,0.22) 38%, rgba(20,14,8,0.86) 100%);"
+    class="max-w-wrap mx-auto px-gutter pt-12 pb-14 lg:pt-16 lg:pb-16 grid gap-10 lg:gap-16 lg:grid-cols-[1.05fr_1fr] items-center lg:min-h-[calc(100dvh-216px)]"
   >
-  </div>
-
-  <div
-    class="relative max-w-wrap mx-auto w-full flex items-stretch justify-between gap-10"
-  >
-    <div class="flex flex-col gap-[26px] items-start self-center">
-      <span
-        class="inline-flex items-center px-4 py-2 rounded-full border border-muted bg-black/20 text-[12.5px] font-semibold tracking-[0.3em] uppercase text-paper backdrop-blur-[2px]"
-      >
-        Pre-Launch Preview
-      </span>
-      <h1
-        class="font-inter font-bold text-[clamp(30px,4.2vw,54px)] leading-[1.1] tracking-[-0.01em] max-w-[640px] text-[#f5eee1] [text-wrap:balance]"
-      >
-        {project.name} — Private-Lift Living in <span class="text-accent-hover"
-          >Section 13, PJ</span
-        >
-      </h1>
-      <p
-        class="font-inter font-medium text-[clamp(16px,1.6vw,19px)] leading-[1.62] max-w-[600px] text-white/[0.82]"
-      >
-        A low-density collection of residences by {developer.name}, facing Plaza
-        33 in the heart of Petaling Jaya — where every home opens to its own
-        private lift lobby. Now in pre-launch preview.
+    <div class="flex flex-col items-start gap-7 hero-in">
+      <p class="text-[13px] font-semibold uppercase tracking-[0.2em] text-accent">
+        Trybe Residences · Phase 2 now launching
       </p>
-      <div class="mt-2 flex flex-wrap gap-3.5">
+      <h1
+        class="text-[clamp(44px,6.2vw,88px)] font-semibold leading-[1] tracking-[-0.03em]"
+      >
+        Subang Jaya's<br /><span class="text-accent">new beat.</span>
+      </h1>
+      <p class="text-[clamp(17px,1.5vw,20px)] leading-[1.55] text-fg-muted max-w-[46ch]">
+        Freehold 2 and 3-bedroom homes at Subang Jaya Xchange, the largest TOD
+        township plan, walkway-linked to <span class="whitespace-nowrap">USJ7 LRT-BRT.</span>
+      </p>
+      <div class="flex flex-wrap gap-3 pt-1">
         <a
-          href={enquireHref}
+          href={waLink(registerMessage)}
           target="_blank"
           rel="nofollow noopener noreferrer"
-          class="inline-block px-9 py-[18px] rounded-[40px] text-[13px] font-semibold tracking-[0.14em] uppercase transition-colors duration-[250ms] bg-accent-hover text-hero hover:bg-accent"
-          >Enquire on WhatsApp</a
+          class="btn-primary"
         >
-        <a
-          href="#residences"
-          class="inline-block px-9 py-[18px] rounded-[40px] text-[13px] font-semibold tracking-[0.14em] uppercase transition-colors duration-[250ms] border border-white text-white backdrop-blur-[4px] hover:bg-white/[0.14]"
-          >Explore Layouts</a
-        >
+          <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5" aria-hidden="true" />
+          {ctaLabel}
+        </a>
+        <a href="#residences" class="btn-ghost">
+          View Layouts
+          <Icon name="ph:arrow-right" class="w-4 h-4" aria-hidden="true" />
+        </a>
       </div>
     </div>
 
-    <!-- Disclosure sits with the render it qualifies, bottom-right of the frame. -->
-    <div class="hidden md:flex flex-col justify-end flex-none">
-      <span
-        class="text-[11px] tracking-[0.22em] uppercase text-white/65 font-semibold border border-white/[0.28] px-[13px] py-1.5 rounded-[2px] backdrop-blur-[3px] whitespace-nowrap"
-      >
-        Artist's Impression
-      </span>
-    </div>
+    <ImageSlot
+      alt="Hype 2 (Trybe) Residences towers and guardhouse at Subang Jaya Xchange at sunset"
+      ratio="5/4"
+      need="hero render of the two towers, 1600x1280, no text"
+      tiles={["t-quarter", "t-circle", "t-stripes", "t-leaf", "t-arcs", "t-split", "t-moon", "t-half", "t-dots", "t-lattice"]}
+      cols={5}
+      eager
+    />
   </div>
+  <PatternBand moving />
 </section>
-
-<script>
-  const media = document.getElementById("hero-media");
-  if (media) {
-    const slides = Array.from(
-      media.querySelectorAll<HTMLElement>("[data-slide]"),
-    );
-    if (slides.length > 1) {
-      let index = 0;
-      setInterval(() => {
-        slides[index].classList.replace("opacity-80", "opacity-0");
-        index = (index + 1) % slides.length;
-        slides[index].classList.replace("opacity-0", "opacity-80");
-      }, 5000);
-    }
-  }
-</script>

@@ -1,0 +1,85 @@
+---
+import ImageSlot from "./ImageSlot.astro";
+
+// Numbers match the keys on the developer's Level 1 facilities plan, so they
+// stay on the items even though the list is grouped.
+const clusters = [
+  {
+    title: "Arrival and security",
+    items: [
+      [1, "Guard pavilion"],
+      [3, "Tower A drop-off"],
+      [4, "Tower B drop-off"],
+      [5, "Lobby"],
+      [8, "Tower A lift lobby"],
+      [9, "Tower B lift lobby"],
+      [11, "Visitor parking"],
+    ],
+  },
+  {
+    title: "Everyday convenience",
+    items: [
+      [6, "Parcel room"],
+      [7, "Mail room"],
+      [10, "Space for shop"],
+      [12, "EV charging bays"],
+      [14, "Car wash bays"],
+      [20, "Bicycle parking"],
+    ],
+  },
+  {
+    title: "Community and services",
+    items: [
+      [2, "Central garden"],
+      [16, "Space for kindergarten"],
+      [17, "Male surau"],
+      [18, "Female surau"],
+      [15, "Management office"],
+      [13, "Loading and unloading bay"],
+      [19, "Refuse centre"],
+    ],
+  },
+];
+---
+
+<section id="facilities" class="py-16 lg:py-24 px-gutter bg-surface">
+  <div class="max-w-wrap mx-auto grid gap-10 lg:gap-16 lg:grid-cols-[1.25fr_1fr] items-start">
+    <div class="lg:sticky lg:top-28" data-reveal>
+      <h2 class="text-[clamp(32px,4vw,52px)] font-semibold leading-[1.05] tracking-[-0.02em] mb-4">
+        Level 1 facilities
+      </h2>
+      <p class="text-[17px] leading-[1.6] text-fg-muted max-w-[52ch] mb-8">
+        A guarded ground level with separate drop-offs for both towers and a
+        central garden.
+      </p>
+      <ImageSlot
+        alt="Level 1 facilities plan of Trybe Residences with numbered keys"
+        ratio="16/10"
+        need="Level 1 facilities plan, 2000x1250"
+        tiles={["t-leaf", "t-lattice", "t-circle", "t-dots", "t-quarter"]}
+        cols={5}
+        impression={false}
+      />
+    </div>
+
+    <div class="flex flex-col gap-10">
+      {
+        clusters.map((c, i) => (
+          <div data-reveal style={`--i:${i}`}>
+            <h3 class="text-[20px] font-semibold pb-3 mb-4 border-b border-line">{c.title}</h3>
+            <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+              {c.items.map(([n, name]) => (
+                <li class="flex items-center gap-3 text-[15.5px]">
+                  <span class="w-7 h-7 flex-none rounded-full border border-line-strong text-[12px] font-semibold text-fg-muted flex items-center justify-center tabular-nums">
+                    {n}
+                  </span>
+                  {name}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

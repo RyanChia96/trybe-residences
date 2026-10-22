@@ -1,0 +1,108 @@
+---
+import { Icon } from "astro-icon/components";
+import ImageSlot from "./ImageSlot.astro";
+
+// Seven highlights from the developer's material, seven cells. The grid is
+// 4 columns on desktop: rows of [2+1+1], [2+2] beside the tall cell, [1+1+2].
+---
+
+<section id="signature" class="py-16 lg:py-24 px-gutter">
+  <div class="max-w-wrap mx-auto">
+    <div class="max-w-[640px] mb-10 lg:mb-14" data-reveal>
+      <h2 class="text-[clamp(32px,4vw,52px)] font-semibold leading-[1.05] tracking-[-0.02em]">
+        Why Trybe
+      </h2>
+      <p class="mt-4 text-[17px] leading-[1.6] text-fg-muted max-w-[52ch]">
+        A freehold address on a train interchange, with layouts you can open up
+        as your household changes.
+      </p>
+    </div>
+
+    <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[minmax(220px,auto)]">
+      <!-- 1. Transit, the headline benefit: tall feature cell -->
+      <article class="md:col-span-2 lg:row-span-2 bg-surface flex flex-col" data-reveal>
+        <ImageSlot
+          alt="Covered walkway leading to the USJ7 LRT-BRT interchange station"
+          ratio="16/10"
+          need="covered walkway to USJ7 LRT-BRT station, 1600x1000"
+          tiles={["t-hstripes", "t-half", "t-circle", "t-arcs", "t-stripes", "t-quarter"]}
+          cols={6}
+        />
+        <div class="p-7 lg:p-9 flex flex-col gap-3 mt-auto">
+          <Icon name="ph:train-simple" class="w-8 h-8 text-accent" aria-hidden="true" />
+          <h3 class="text-[clamp(24px,2.4vw,32px)] font-semibold leading-[1.1]">
+            Covered walkway^ to USJ7 LRT-BRT
+          </h3>
+          <p class="text-[16px] leading-[1.6] text-fg-muted max-w-[44ch]">
+            About 400m to the interchange for the Kelana Jaya LRT and the Sunway
+            BRT lines.
+          </p>
+        </div>
+      </article>
+
+      <!-- 2. Freehold: olive cell, large type only (olive needs 18px+ for AA) -->
+      <article class="bg-olive p-7 flex flex-col justify-between gap-6" data-reveal style="--i:1">
+        <Icon name="ph:seal-check" class="w-8 h-8 text-bg" aria-hidden="true" />
+        <h3 class="text-[26px] font-semibold leading-[1.1] text-bg">Freehold service apartment</h3>
+      </article>
+
+      <!-- 3. Township: image cell -->
+      <article class="bg-surface flex flex-col" data-reveal style="--i:2">
+        <ImageSlot
+          alt="Aerial view of the Subang Jaya Xchange TOD township plan"
+          ratio="4/3"
+          need="aerial of SJX township, 1200x900"
+          tiles={["t-circle", "t-lattice", "t-dots", "t-split"]}
+          cols={4}
+        />
+        <div class="p-7 flex flex-col gap-2">
+          <h3 class="text-[20px] font-semibold leading-[1.2]">The largest TOD township plan</h3>
+          <p class="text-[15px] leading-[1.55] text-fg-muted">Part of Subang Jaya Xchange.</p>
+        </div>
+      </article>
+
+      <!-- 4. Flexi layouts: wide cell -->
+      <article class="md:col-span-2 bg-surface-2 p-7 lg:p-9 flex flex-col justify-between gap-6" data-reveal style="--i:3">
+        <Icon name="ph:hammer" class="w-8 h-8 text-accent" aria-hidden="true" />
+        <div>
+          <h3 class="text-[clamp(22px,2vw,28px)] font-semibold leading-[1.15]">
+            2 to 3-bedroom flexi layouts with hackable walls
+          </h3>
+          <p class="mt-3 text-[16px] leading-[1.6] text-fg-muted max-w-[52ch]">
+            Take out the marked wall to widen the living hall, or keep the extra
+            room for a study.
+          </p>
+        </div>
+      </article>
+
+      <!-- 5. GreenRE: pattern cell -->
+      <article class="relative overflow-hidden bg-bg border border-line p-7 flex flex-col justify-end gap-3 min-h-[220px]" data-reveal>
+        <div class="absolute -top-10 -right-10 w-40 h-40 tile t-leaf rounded-full" aria-hidden="true"></div>
+        <Icon name="ph:plant" class="relative w-8 h-8 text-accent" aria-hidden="true" />
+        <h3 class="relative text-[20px] font-semibold leading-[1.2]">GreenRE Silver certification*</h3>
+      </article>
+
+      <!-- 6. Speed-ramp car park -->
+      <article class="bg-surface p-7 flex flex-col justify-end gap-3" data-reveal style="--i:1">
+        <Icon name="ph:car-profile" class="w-8 h-8 text-accent" aria-hidden="true" />
+        <h3 class="text-[20px] font-semibold leading-[1.2]">Speed-ramp car park for easy access</h3>
+      </article>
+
+      <!-- 7. Highways: wide cell with stripe accent -->
+      <article class="md:col-span-2 bg-surface grid grid-cols-[1fr_auto]" data-reveal style="--i:2">
+        <div class="p-7 lg:p-9 flex flex-col justify-end gap-3">
+          <Icon name="ph:road-horizon" class="w-8 h-8 text-accent" aria-hidden="true" />
+          <h3 class="text-[clamp(22px,2vw,28px)] font-semibold leading-[1.15]">
+            Connected to KESAS, LDP, NPE and ELITE
+          </h3>
+        </div>
+        <div class="w-[clamp(72px,9vw,128px)] t-stripes" aria-hidden="true"></div>
+      </article>
+    </div>
+
+    <p class="mt-5 text-[13px] leading-[1.6] text-fg-subtle max-w-[80ch]">
+      ^ * Subject to final approval and certification by the relevant
+      authorities. Distances are approximate.
+    </p>
+  </div>
+</section>

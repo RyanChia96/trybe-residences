@@ -2,10 +2,10 @@ import type { APIRoute } from "astro";
 
 export const prerender = true;
 
-const SITE = "https://www.pjprelaunchprivatelift.com.my";
+const SITE = "https://www.subangjayabiggesttodtownship.com.my";
 
 // Auto-discover every page under src/pages (.astro / .md / .mdx / .html).
-// New pages get picked up automatically on the next build — no manual edits.
+// New pages get picked up automatically on the next build, no manual edits.
 const pageModules = import.meta.glob("./**/*.{astro,md,mdx,html}");
 
 const discoveredPaths = Object.keys(pageModules)

@@ -1,175 +1,232 @@
 ---
-import { project, developer, waLink } from "../config/site";
+import { Icon } from "astro-icon/components";
+import ImageSlot from "./ImageSlot.astro";
 
-const stats = [
-  { title: "Section 13, PJ", note: "A central, mature Petaling Jaya address." },
-  { title: "Facing Plaza 33", note: "Fronting Jalan Kemajuan & Jalan 13/1." },
+// Rail lines reachable from the USJ7 interchange, from the developer's
+// connectivity board. Built as markup, not an image, so it stays legible.
+const lines = [
   {
-    title: "Pre-launch preview",
-    note: "Registration is open ahead of the official launch.",
+    name: "LRT Kelana Jaya Line",
+    dot: "bg-accent",
+    rail: "bg-accent",
+    stops: [
+      { code: "KJ29", name: "SS15", note: "SS15 Courtyard, INTI International" },
+      { code: "KJ19", name: "University", note: "MAHSA, Taylor's University" },
+      { code: "KJ15", name: "KL Sentral", note: "ETS, KLIA Express, MRT, KTM" },
+      { code: "KJ10", name: "KLCC", note: "Suria KLCC, Petronas Twin Towers" },
+    ],
   },
   {
-    title: "Developer",
-    note: developer.name,
+    name: "BRT Sunway Line",
+    dot: "bg-olive",
+    rail: "bg-olive",
+    stops: [
+      { code: "SB5", name: "SunU-Monash", note: "Monash, Sunway University" },
+      { code: "SB4", name: "SunMed", note: "Sunway Medical, Taylor's College" },
+      { code: "SB3", name: "Sunway Lagoon", note: "Sunway Pyramid, Sunway Lagoon" },
+      { code: "SB1", name: "Sunway-Setia Jaya", note: "The One Academy" },
+    ],
   },
 ];
 
 const groups = [
   {
-    title: "Shopping",
-    icon: "/assets/icons/shopping-bag.svg",
+    id: "transport",
+    title: "Transport",
+    icon: "ph:train-simple",
     items: [
-      ["Jaya Shopping Centre", "850 m"],
-      ["Jaya 33", "1.3 km"],
-      ["Jaya One", "2.1 km"],
-      ["Mid Valley Megamall", "5.3 km"],
+      ["400m", "USJ7 LRT-BRT Interchange Station"],
+      ["400m", "USJ Taipan Station"],
+      ["6.4km", "Subang Jaya LRT-KTM Interchange Station"],
+      ["10.7km", "Subang Airport"],
     ],
   },
   {
-    title: "Healthcare",
-    icon: "/assets/icons/cross.svg",
+    id: "retail",
+    title: "Retail",
+    icon: "ph:shopping-bag",
     items: [
-      ["Hospital Picaso", "1.3 km"],
-      ["Columbia Asia Hospital PJ", "1.9 km"],
-      ["University Malaya Medical Centre", "2.2 km"],
-      ["Assunta Hospital", "3.4 km"],
+      ["350m", "SJ7 (upcoming collaboration hub)"],
+      ["750m", "Easyhome Mall (Da Men Mall)"],
+      ["1.3km", "Taipan USJ"],
+      ["2.0km", "Summit USJ"],
+      ["2.2km", "Mydin Hypermarket USJ1"],
     ],
   },
   {
+    id: "health",
+    title: "Health and safety",
+    icon: "ph:shield-check",
+    items: [
+      ["950m", "QHC Medical Centre"],
+      ["1.0km", "Subang Jaya District Police HQ"],
+      ["1.1km", "OSC Orthopaedic Specialist Centre"],
+      ["1.5km", "Taipan Police Station"],
+      ["5.0km", "Subang Jaya Medical Centre (SJMC)"],
+      ["5.6km", "Sunway Medical Centre"],
+    ],
+  },
+  {
+    id: "sports",
+    title: "Sports",
+    icon: "ph:soccer-ball",
+    items: [
+      ["1.2km", "Pickle Haven USJ"],
+      ["1.3km", "USJ1 Public Park and basketball court"],
+      ["1.8km", "Forum Optimum Badminton Centre"],
+      ["1.9km", "Kompleks 3K Subang Jaya"],
+      ["1.9km", "Lavana 2 Sports Centre (Subang)"],
+      ["2.0km", "91 Sports Arena"],
+      ["2.9km", "Republic of Futsal Subang Elite"],
+    ],
+  },
+  {
+    id: "education",
     title: "Education",
-    icon: "/assets/icons/graduation-cap.svg",
+    icon: "ph:graduation-cap",
     items: [
-      ["SK Sri Petaling", "600 m"],
-      ["Bukit Bintang Boys' Secondary", "700 m"],
-      ["University Malaya", "3.3 km"],
-      ["Nobel International School", "6.5 km"],
+      ["1.2km", "Cilantro Culinary Academy"],
+      ["1.2km", "ANIBT Malaysia Campus"],
+      ["1.3km", "International Medical College (IMC)"],
+      ["1.7km", "Water Mates Swimming Academy"],
+      ["2.1km", "SEGi University and Colleges"],
+      ["2.1km", "Tech Terrain College"],
+      ["2.6km", "Monash University Malaysia"],
     ],
   },
   {
-    title: "Connectivity",
-    icon: "/assets/icons/connectivity.svg",
+    id: "business",
+    title: "Business",
+    icon: "ph:briefcase",
     items: [
-      ["Phileo Damansara MRT", "3.0 km"],
-      ["Asia Jaya LRT", "3.5 km"],
-      ["Federal Highway", "Direct"],
-      ["LDP / Sprint Expressway", "Nearby"],
+      ["1.1km", "Subang Business Centre"],
+      ["1.6km", "Taipan Business Centre"],
+      ["2.1km", "Subang Jaya City Council"],
     ],
   },
 ];
-
-const brochureHref = waLink(
-  `Hi Chloe, could you send me the ${project.name} brochure?`,
-);
 ---
 
-<section
-  id="location"
-  class="bg-forest text-forest-text py-20 px-gutter"
->
-  <div class="max-w-wrap mx-auto flex flex-col gap-[60px]">
-    <div class="flex flex-wrap items-end justify-between gap-6">
-      <h2
-        class="font-inter font-semibold text-[clamp(26px,3.2vw,42px)] leading-[1.15] tracking-[-0.008em] max-w-[400px]"
-      >
-        In the heart of Petaling Jaya
+<section id="location" class="py-16 lg:py-24 px-gutter bg-surface">
+  <div class="max-w-wrap mx-auto">
+    <div class="max-w-[720px] mb-10 lg:mb-14" data-reveal>
+      <h2 class="text-[clamp(32px,4vw,52px)] font-semibold leading-[1.05] tracking-[-0.02em]">
+        On the line to KL Sentral and Sunway
       </h2>
-      <p
-        class="text-[15.5px] text-[rgba(242,237,226,0.78)] max-w-[500px] leading-[1.7] font-light"
-      >
-        The development sits along Jalan Kemajuan and Jalan 13/1 in Section 13,
-        facing Plaza 33 — where the calm of an established address meets the
-        convenience of the city. Quietly set apart, yet effortlessly connected
-        to everything that matters.
+      <p class="mt-4 text-[17px] leading-[1.6] text-fg-muted max-w-[56ch]">
+        USJ7 is an interchange: board the Kelana Jaya LRT towards KLCC, or the
+        Sunway BRT towards Sunway Pyramid, from one station.
       </p>
     </div>
 
-    <div class="flex flex-col md:flex-row gap-10 items-center">
-      <div class="relative rounded-[8px] overflow-hidden flex-1 w-full">
-        <img
-          class="w-full h-auto"
-          src="/assets/location-map-petaling-jaya.webp"
-          alt="Map showing the development's location in the heart of Petaling Jaya, facing Plaza 33"
-          loading="lazy"
-        />
-      </div>
+    <!-- Rail diagram: horizontal on desktop, vertical on mobile -->
+    <div class="flex flex-col gap-10 lg:gap-12 mb-16 lg:mb-20">
+      {
+        lines.map((line) => (
+          <div data-reveal>
+            <p class="text-[15px] font-semibold mb-5 flex items-center gap-2.5">
+              <span class:list={["inline-block w-3.5 h-3.5 rounded-full", line.dot]} aria-hidden="true" />
+              {line.name}
+            </p>
+            <ol class="relative grid gap-6 md:grid-cols-4 md:gap-4 pl-7 md:pl-0">
+              <span
+                class:list={["absolute left-[6px] top-2 bottom-2 w-[3px] md:left-0 md:right-0 md:top-[6px] md:bottom-auto md:w-auto md:h-[3px]", line.rail]}
+                aria-hidden="true"
+              />
+              {line.stops.map((s) => (
+                <li class="relative md:pt-8">
+                  <span
+                    class="absolute -left-7 top-1 md:left-0 md:top-0 w-[15px] h-[15px] rounded-full bg-bg border-[3px] border-fg"
+                    aria-hidden="true"
+                  />
+                  <p class="text-[13px] font-semibold text-fg-subtle tracking-[0.04em]">{s.code}</p>
+                  <p class="text-[19px] font-semibold leading-[1.2] mt-0.5">{s.name}</p>
+                  <p class="text-[14px] leading-[1.5] text-fg-muted mt-1">{s.note}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))
+      }
+    </div>
 
-      <div class="flex flex-col gap-8 justify-center md:w-[480px] flex-none">
+    <!-- Map + nearby places in tabs -->
+    <div class="grid gap-10 lg:gap-14 lg:grid-cols-[1.1fr_1fr] items-start">
+      <ImageSlot
+        alt="Location map of Trybe Residences beside USJ7 Station, between KESAS, LDP and Puchong"
+        ratio="4/3"
+        need="location map (Subang Jaya, USJ7 Station, KESAS, LDP), 1600x1200"
+        tiles={["t-lattice", "t-circle", "t-arcs", "t-quarter"]}
+        cols={4}
+        impression={false}
+      />
+
+      <div data-reveal>
+        <h3 class="text-[26px] font-semibold leading-[1.15] mb-5">Close to home</h3>
+        <div role="tablist" aria-label="Nearby places" class="flex flex-wrap gap-2 mb-7">
+          {
+            groups.map((g, i) => (
+              <button
+                type="button"
+                role="tab"
+                id={`tab-${g.id}`}
+                aria-controls={`panel-${g.id}`}
+                aria-selected={i === 0 ? "true" : "false"}
+                tabindex={i === 0 ? 0 : -1}
+                data-tab
+                class="inline-flex items-center gap-2 px-4 py-2.5 text-[14px] font-medium border border-line-strong text-fg-muted transition-colors duration-200 hover:text-fg aria-selected:bg-fg aria-selected:text-bg aria-selected:border-fg"
+              >
+                <Icon name={g.icon} class="w-4 h-4" aria-hidden="true" />
+                {g.title}
+              </button>
+            ))
+          }
+        </div>
         {
-          stats.map((s, i) => (
-            <div
-              class:list={[
-                "pb-4",
-                i < stats.length - 1 &&
-                  "border-b border-[rgba(242,237,226,0.12)]",
-              ]}
+          groups.map((g, i) => (
+            <ul
+              role="tabpanel"
+              id={`panel-${g.id}`}
+              aria-labelledby={`tab-${g.id}`}
+              hidden={i !== 0}
+              class="grid gap-4"
             >
-              <h3 class="font-serif text-[28px] font-semibold mb-2">
-                {s.title}
-              </h3>
-              <p class="text-[13.5px] leading-[1.6] text-[rgba(242,237,226,0.66)] font-light">
-                {s.note}
-              </p>
-            </div>
+              {g.items.map(([dist, name]) => (
+                <li class="grid grid-cols-[84px_1fr] items-baseline gap-4">
+                  <span class="text-[20px] font-semibold text-accent tabular-nums">{dist}</span>
+                  <span class="text-[16px] leading-[1.45]">{name}</span>
+                </li>
+              ))}
+            </ul>
           ))
         }
-        <a
-          href={brochureHref}
-          target="_blank"
-          rel="nofollow noopener noreferrer"
-          class="inline-flex items-center justify-center gap-3 self-start px-9 py-[18px] rounded-[40px] bg-accent-hover text-hero text-[13px] font-semibold tracking-[0.14em] uppercase transition-colors duration-[250ms] hover:bg-accent"
-        >
-          <img
-            src="/assets/icons/whatsapp-mark.svg"
-            alt=""
-            aria-hidden="true"
-            width="18"
-            height="18"
-            class="w-[18px] h-[18px] flex-none"
-          />
-          WhatsApp for Brochure
-        </a>
+        <p class="mt-8 text-[13px] text-fg-subtle">
+          Distances are approximate and for reference only.
+        </p>
       </div>
-    </div>
-
-    <div class="flex flex-col gap-3">
-      <div
-        class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-10"
-      >
-        {
-          groups.map((g) => (
-            <div class="border-r border-[rgba(242,237,226,0.12)] pr-8 pb-4 last:border-none last:pr-0 flex flex-col gap-[18px]">
-              <div class="flex items-center gap-2">
-                <img
-                  src={g.icon}
-                  alt=""
-                  aria-hidden="true"
-                  width="20"
-                  height="20"
-                  class="w-5 h-5 flex-none"
-                />
-                <h4
-                  class="text-[11.5px] tracking-[0.16em] uppercase text-accent-hover font-bold"
-                >
-                  {g.title}
-                </h4>
-              </div>
-              <ul class="list-none flex flex-col gap-[13px]">
-                {g.items.map(([name, dist]) => (
-                  <li class="flex justify-between gap-3 text-sm text-[rgba(242,237,226,0.82)]">
-                    <span>{name}</span>
-                    <span class="text-[rgba(242,237,226,0.45)] whitespace-nowrap">
-                      {dist}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))
-        }
-      </div>
-      <p class="text-[12.5px] text-[rgba(242,237,226,0.4)] leading-[1.6]">
-        Distances are approximate and for reference only.
-      </p>
     </div>
   </div>
 </section>
+
+<script>
+  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-tab]"));
+  const select = (tab: HTMLButtonElement) => {
+    for (const t of tabs) {
+      const on = t === tab;
+      t.setAttribute("aria-selected", String(on));
+      t.tabIndex = on ? 0 : -1;
+      const panel = document.getElementById(t.getAttribute("aria-controls")!);
+      if (panel) panel.hidden = !on;
+    }
+  };
+  tabs.forEach((tab, i) => {
+    tab.addEventListener("click", () => select(tab));
+    tab.addEventListener("keydown", (e) => {
+      const step = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (!step) return;
+      const next = tabs[(i + step + tabs.length) % tabs.length];
+      next.focus();
+      select(next);
+    });
+  });
+</script>

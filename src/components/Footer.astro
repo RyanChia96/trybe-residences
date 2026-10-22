@@ -1,7 +1,7 @@
 ---
+import PatternBand from "./PatternBand.astro";
 import {
   project,
-  developer,
   agency,
   agent,
   independenceNotice,
@@ -12,9 +12,9 @@ import {
 const year = new Date().getFullYear();
 ---
 
-<footer
-  class="bg-footer-bg text-footer-text pt-[clamp(70px,8vw,110px)] px-gutter pb-11"
->
+<footer class="bg-bg text-fg">
+  <PatternBand />
+  <div class="px-gutter pt-[clamp(64px,8vw,104px)] pb-11">
   <div class="max-w-wrap mx-auto">
     <div
       class="flex flex-col md:flex-row md:items-start md:justify-between gap-12 pb-[40px]"
@@ -24,38 +24,40 @@ const year = new Date().getFullYear();
           <img
             src="/assets/pjpropertylogo.svg"
             alt={project.name}
-            class="w-10 h-10 rounded-[8px] flex-none"
+            width="40"
+            height="40"
+            class="w-10 h-10 flex-none"
           />
           <span class="flex flex-col leading-none">
             <span
-              class="font-serif text-[22px] font-semibold tracking-[0.14em] text-forest-text"
+              class="text-[21px] font-semibold tracking-[0.22em]"
               >{project.wordmarkTop}</span
             >
             <span
-              class="text-[9px] tracking-[0.42em] text-[rgba(242,237,226,0.5)] font-semibold mt-1"
+              class="text-[10px] tracking-[0.3em] text-fg-subtle font-medium mt-1"
               >{project.wordmarkBottom}</span
             >
           </span>
         </div>
-        <p class="text-sm leading-[1.7] text-[rgba(223,217,204,0.72)]">
-          Pre-launch preview of {project.name} — a low-density, private-lift
-          development in Section 13, Petaling Jaya, by {developer.name}.
+        <p class="text-[15px] leading-[1.7] text-fg-muted">
+          Phase 2 of a freehold TOD service apartment at Subang Jaya Xchange,
+          USJ7, Subang Jaya.
         </p>
       </div>
       <div>
         <h4
-          class="text-[11.5px] tracking-[0.16em] uppercase text-[rgba(242,237,226,0.5)] font-bold mb-[18px]"
+          class="text-[13px] tracking-[0.12em] uppercase text-fg-subtle font-bold mb-[18px]"
         >
           Explore
         </h4>
         <ul
-          class="list-none flex flex-col gap-3 text-sm text-[rgba(223,217,204,0.82)]"
+          class="list-none flex flex-col gap-3 text-[15px] text-fg-muted whitespace-nowrap"
         >
           <li>
             <a
               href="#signature"
               class="transition-colors duration-200 hover:text-accent"
-              >Private Lift</a
+              >Why Trybe</a
             >
           </li>
           <li>
@@ -79,28 +81,28 @@ const year = new Date().getFullYear();
           <li>
             <a
               href="#register"
-              class="transition-colors duration-200 hover:text-accent">Enquire</a
+              class="transition-colors duration-200 hover:text-accent">Register Interest</a
             >
           </li>
         </ul>
       </div>
       <div>
         <h4
-          class="text-[11.5px] tracking-[0.16em] uppercase text-[rgba(242,237,226,0.5)] font-bold mb-[18px]"
+          class="text-[13px] tracking-[0.12em] uppercase text-fg-subtle font-bold mb-[18px]"
         >
           Marketed by
         </h4>
         <ul
-          class="list-none flex flex-col gap-2 text-sm text-[rgba(223,217,204,0.82)] max-w-[34ch]"
+          class="list-none flex flex-col gap-2 text-[15px] text-fg-muted max-w-[34ch]"
         >
           <li>{agent.name} · {agent.ren}</li>
-          <li class="text-[rgba(223,217,204,0.62)]">
+          <li class="text-fg-subtle">
             {agency.name}{agency.companyNo ? ` (${agency.companyNo})` : ""}
           </li>
-          <li class="text-[rgba(223,217,204,0.62)]">
+          <li class="text-fg-subtle">
             Registered Estate Agency, BOVAEP {agency.licence}
           </li>
-          <li class="text-[rgba(223,217,204,0.62)] leading-[1.6] pt-1">
+          <li class="text-fg-subtle leading-[1.6] pt-1">
             {agency.address}
           </li>
           <li class="pt-1">
@@ -122,7 +124,7 @@ const year = new Date().getFullYear();
               href="https://lpeph.gov.my/search-listing"
               target="_blank"
               rel="nofollow noopener noreferrer"
-              class="underline underline-offset-2 text-[rgba(223,217,204,0.62)] transition-colors duration-200 hover:text-accent"
+              class="underline underline-offset-2 text-fg-subtle transition-colors duration-200 hover:text-accent"
               >Verify on the BOVAEP register</a
             >
           </li>
@@ -130,18 +132,17 @@ const year = new Date().getFullYear();
       </div>
       <div class="max-w-[46ch]">
         <h4
-          class="text-[11.5px] tracking-[0.16em] uppercase text-[rgba(242,237,226,0.5)] font-bold mb-[18px]"
+          class="text-[13px] tracking-[0.12em] uppercase text-fg-subtle font-bold mb-[18px]"
         >
           Project governance
         </h4>
         <p
-          class="text-[11.5px] leading-[1.7] text-[rgba(223,217,204,0.55)] mb-3"
+          class="text-[13px] leading-[1.7] text-fg-subtle mb-3"
         >
-          Developer: <span class="text-[rgba(223,217,204,0.8)]"
-            >{developer.name}</span
-          > ({developer.companyNo})<br />{permitNotice}
+          This site markets Phase 2 of Hype 2 (Trybe) Residences at Subang Jaya
+          Xchange, USJ7, Subang Jaya.<br />{permitNotice}
         </p>
-        <p class="text-[11.5px] leading-[1.7] text-[rgba(223,217,204,0.5)]">
+        <p class="text-[13px] leading-[1.7] text-fg-subtle">
           {materialsNotice}
         </p>
       </div>
@@ -150,17 +151,17 @@ const year = new Date().getFullYear();
     <!-- The single most important line on the page for ad review: who this
          site is, and who it is not. -->
     <div
-      class="border-t border-[rgba(242,237,226,0.12)] pt-8 pb-2 text-[12px] leading-[1.75] text-[rgba(223,217,204,0.62)] max-w-[92ch]"
+      class="border-t border-line pt-8 pb-2 text-[13px] leading-[1.75] text-fg-subtle max-w-[92ch]"
     >
       <span
-        class="text-[10.5px] tracking-[0.16em] uppercase font-bold text-[rgba(242,237,226,0.5)] block mb-2"
+        class="text-[12px] tracking-[0.12em] uppercase font-bold text-fg-subtle block mb-2"
         >Independent agency disclaimer</span
       >
       {independenceNotice}
     </div>
 
     <div
-      class="flex flex-wrap gap-3.5 justify-center md:justify-between items-center border-t border-[rgba(242,237,226,0.12)] text-[13px] text-[rgba(223,217,204,0.55)] py-[32px] mt-6"
+      class="flex flex-wrap gap-3.5 justify-center md:justify-between items-center border-t border-line text-[13px] text-fg-subtle py-[32px] mt-6"
     >
       <span
         >© {year} {agent.name}, {agency.name}. Not the official developer
@@ -184,5 +185,6 @@ const year = new Date().getFullYear();
         >
       </div>
     </div>
+  </div>
   </div>
 </footer>

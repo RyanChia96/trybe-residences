@@ -1,0 +1,64 @@
+---
+// An image, or (until the generated renders arrive) a Bauhaus tile
+// composition at the same aspect ratio so the layout does not shift when the
+// real file is dropped in. To fill a slot: put the file in /public/assets and
+// pass `src`.
+interface Props {
+  src?: string;
+  alt: string;
+  ratio: string; // e.g. "4/5"
+  need: string; // what the missing image should be, for the TODO list
+  tiles?: string[];
+  cols?: number;
+  impression?: boolean;
+  eager?: boolean;
+  class?: string;
+}
+const {
+  src,
+  alt,
+  ratio,
+  need,
+  tiles = ["t-circle", "t-quarter", "t-stripes", "t-leaf", "t-arcs", "t-split"],
+  cols = 3,
+  impression = true,
+  eager = false,
+  class: cls,
+} = Astro.props;
+---
+
+<figure class:list={["flex flex-col gap-2.5", cls]}>
+  {
+    src ? (
+      <img
+        src={src}
+        alt={alt}
+        loading={eager ? "eager" : "lazy"}
+        fetchpriority={eager ? "high" : undefined}
+        decoding="async"
+        class="w-full h-auto object-cover"
+        style={`aspect-ratio:${ratio}`}
+      />
+    ) : (
+      <>
+        <Fragment set:html={`<!-- TODO image: ${need} -->`} />
+        <div
+          role="img"
+          aria-label={alt}
+          class="w-full grid overflow-hidden content-start bg-olive-deep"
+          style={`aspect-ratio:${ratio};grid-template-columns:repeat(${cols},1fr)`}
+        >
+          {Array.from({ length: cols * 6 }, (_, i) => (
+            // Shift each row by 3 so no column repeats the same tile.
+            <div class:list={["tile", tiles[(i + Math.floor(i / cols) * 3) % tiles.length]]} />
+          ))}
+        </div>
+      </>
+    )
+  }
+  {
+    src && impression && (
+      <figcaption class="text-[12px] text-fg-subtle">Artist's impression</figcaption>
+    )
+  }
+</figure>

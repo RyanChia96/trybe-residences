@@ -1,62 +1,52 @@
 ---
-import { project, identityLine } from "../config/site";
+import { project, identityLine, ctaLabel } from "../config/site";
+
+const links = [
+  { href: "#signature", label: "Why Trybe" },
+  { href: "#residences", label: "Layouts" },
+  { href: "#location", label: "Location" },
+  { href: "#faq", label: "FAQ" },
+];
 ---
 
 <!-- Advertiser identity, stated before anything else on the page. -->
 <div
-  class="bg-forest text-[rgba(242,237,226,0.86)] text-center text-[11.5px] leading-[1.5] px-gutter py-2.5 tracking-[0.02em]"
+  class="bg-surface text-fg-muted text-center text-[12px] leading-[1.5] px-gutter py-2.5"
 >
   {identityLine}
 </div>
 
-<header class="bg-white/[0.94] backdrop-blur-[12px]">
+<header class="sticky top-0 z-header bg-bg/90 backdrop-blur-md border-b border-line">
   <nav
-    class="max-w-wrap mx-auto px-gutter md:px-0 py-[26px] flex items-center justify-between gap-6"
+    class="max-w-wrap mx-auto px-gutter h-[72px] flex items-center justify-between gap-6"
   >
-    <a href="#top" class="flex items-center gap-[13px] flex-none">
+    <a href="#top" class="flex items-center gap-3 flex-none">
       <img
         src="/assets/pjpropertylogo.svg"
         alt={project.name}
-        class="w-[42px] h-[42px] rounded-[8px] flex-none"
+        width="40"
+        height="40"
+        class="w-10 h-10 flex-none"
       />
       <span class="flex flex-col leading-none">
-        <span class="font-serif text-[22px] font-semibold tracking-[0.14em]"
-          >{project.wordmarkTop}</span
-        >
-        <span
-          class="text-[9.5px] tracking-[0.42em] text-muted font-semibold mt-1"
+        <span class="text-[21px] font-semibold tracking-[0.22em]">{project.wordmarkTop}</span>
+        <span class="hidden sm:block text-[10px] tracking-[0.3em] text-fg-subtle font-medium mt-1"
           >{project.wordmarkBottom}</span
         >
       </span>
     </a>
-    <div
-      class="hidden md:flex items-center gap-[clamp(20px,3vw,44px)] text-[13px] font-semibold tracking-[0.14em] uppercase text-[#3a382f]"
-    >
-      <a
-        href="#signature"
-        class="opacity-[0.72] transition-opacity duration-200 hover:opacity-100"
-        >Private Lift</a
-      >
-      <a
-        href="#residences"
-        class="opacity-[0.72] transition-opacity duration-200 hover:opacity-100"
-        >Layouts</a
-      >
-      <a
-        href="#location"
-        class="opacity-[0.72] transition-opacity duration-200 hover:opacity-100"
-        >Location</a
-      >
-      <a
-        href="#faq"
-        class="opacity-[0.72] transition-opacity duration-200 hover:opacity-100"
-        >FAQ</a
-      >
-      <a
-        href="#register"
-        class="border border-ink px-[26px] py-3 rounded-[40px] tracking-[0.12em] transition-colors duration-[250ms] hover:bg-ink hover:text-white"
-        >Enquire</a
-      >
+    <div class="flex items-center gap-[clamp(20px,2.6vw,40px)] text-[15px] font-medium">
+      {
+        links.map((l) => (
+          <a
+            href={l.href}
+            class="hidden lg:inline text-fg-muted transition-colors duration-200 hover:text-fg"
+          >
+            {l.label}
+          </a>
+        ))
+      }
+      <a href="#register" class="btn-primary !px-5 !py-3 !text-[14px]">{ctaLabel}</a>
     </div>
   </nav>
 </header>

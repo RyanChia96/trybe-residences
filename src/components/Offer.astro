@@ -1,0 +1,36 @@
+---
+import { Icon } from "astro-icon/components";
+import { ctaLabel, registerMessage, waLink } from "../config/site";
+
+// Large Bauhaus shapes framing the offer. Decorative only.
+const frame = ["t-half", "t-leaf", "t-stripes", "t-circle", "t-arcs", "t-split"];
+---
+
+<section id="offer" class="relative overflow-hidden py-20 lg:py-28 px-gutter">
+  <div class="absolute inset-0 grid grid-cols-3 md:grid-cols-6 opacity-90" aria-hidden="true">
+    {frame.map((t) => <div class:list={["tile !aspect-auto", t]} />)}
+  </div>
+  <div class="absolute inset-0 bg-bg/80" aria-hidden="true"></div>
+
+  <div class="relative max-w-[760px] mx-auto text-center flex flex-col items-center gap-6" data-reveal>
+    <p class="text-[13px] font-semibold uppercase tracking-[0.2em] text-accent">
+      Phase 1 100% sold
+    </p>
+    <h2 class="text-[clamp(36px,5vw,64px)] font-semibold leading-[1.02] tracking-[-0.025em]">
+      Early birds save up to <span class="text-accent">RM80K</span>
+    </h2>
+    <p class="text-[18px] leading-[1.6] text-fg-muted max-w-[46ch]">
+      For the first 50 purchasers in Phase 2. Offer terms are set and confirmed
+      by the developer.
+    </p>
+    <a
+      href={waLink(registerMessage)}
+      target="_blank"
+      rel="nofollow noopener noreferrer"
+      class="btn-primary mt-2"
+    >
+      <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5" aria-hidden="true" />
+      {ctaLabel}
+    </a>
+  </div>
+</section>

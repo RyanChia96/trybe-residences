@@ -1,24 +1,18 @@
 ---
 import LegalLayout from "../layouts/LegalLayout.astro";
-import {
-  project,
-  developer,
-  agency,
-  agent,
-  independenceNotice,
-} from "../config/site";
+import { agency, agent, independenceNotice } from "../config/site";
 
-const lastUpdated = "18 August 2026";
+const lastUpdated = "22 October 2026";
 ---
 
 <LegalLayout
-  title={`Privacy Policy | ${project.name}`}
+  title={`Privacy Policy | Trybe Residences, Subang Jaya`}
   description={`How ${agency.name} and ${agent.name} (${agent.ren}) collect, use and protect your personal data under Malaysia's Personal Data Protection Act 2010.`}
   heading="Privacy Policy"
   lastUpdated={lastUpdated}
   path="/privacy/"
 >
-  <div class="bg-paper rounded-[8px] p-6 text-[14.5px] leading-[1.7] text-ink">
+  <div class="bg-surface border border-line p-6 text-[15px] leading-[1.7] text-fg">
     <p class="font-semibold mb-2">Who we are</p>
     <p>{independenceNotice}</p>
   </div>
@@ -27,10 +21,9 @@ const lastUpdated = "18 August 2026";
     This Privacy Policy explains how {agent.name} ({agent.ren}) and {
       agency.name
     } (Registered Estate Agency, BOVAEP {agency.licence}) collect, use, disclose
-    and protect your personal data in connection with enquiries about {
-      project.name
-    }. We handle personal data in accordance with Malaysia's Personal Data
-    Protection Act 2010 (PDPA).
+    and protect your personal data in connection with enquiries about this
+    development. We handle personal data in accordance with Malaysia's Personal
+    Data Protection Act 2010 (PDPA).
   </p>
 
   <section>
@@ -38,7 +31,7 @@ const lastUpdated = "18 August 2026";
     <p class="mb-3">
       This website has no enquiry form and does not collect personal data from
       you on the page itself. We only receive what you choose to send us when
-      you contact us by WhatsApp, telephone or email — typically:
+      you contact us by WhatsApp, telephone or email, typically:
     </p>
     <ul>
       <li>Your name;</li>
@@ -57,7 +50,7 @@ const lastUpdated = "18 August 2026";
         launch information you have asked for;
       </li>
       <li>
-        Contact you by phone, WhatsApp, email or SMS about {project.name};
+        Contact you by phone, WhatsApp, email or SMS about this development;
       </li>
       <li>Arrange viewings and follow up on your expression of interest;</li>
       <li>Comply with our legal and regulatory obligations.</li>
@@ -103,10 +96,10 @@ const lastUpdated = "18 August 2026";
   <section>
     <h2>4. Disclosure of your information</h2>
     <p>
-      We may share your personal data with the developer, {developer.name}, and
-      its authorised sales representatives, for the sole purpose of processing
-      your enquiry. We do not sell, rent or trade your personal data. We may
-      disclose data where required by law or by a regulatory authority.
+      We may share your personal data with the developer and its authorised
+      sales representatives, for the sole purpose of processing your enquiry. We
+      do not sell, rent or trade your personal data. We may disclose data where
+      required by law or by a regulatory authority.
     </p>
   </section>
 
@@ -136,10 +129,10 @@ const lastUpdated = "18 August 2026";
       For any question about this Privacy Policy or how your personal data is
       handled, please contact:
     </p>
-    <div class="bg-paper rounded-[8px] p-6 text-[14.5px] leading-[1.7] text-ink">
+    <div class="bg-surface border border-line p-6 text-[15px] leading-[1.7] text-fg">
       <p class="font-semibold">{agent.name} · {agent.ren}</p>
-      <p class="text-muted">
-        {agency.name} — Registered Estate Agency, BOVAEP {agency.licence}
+      <p class="text-fg-muted">
+        {agency.name}, Registered Estate Agency, BOVAEP {agency.licence}
       </p>
       <p class="mt-2">{agency.address}</p>
       <p class="mt-2">

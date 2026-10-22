@@ -5,28 +5,32 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // Dark-only page (approved). Brand palette: #EF4A2B vermilion (the one
+      // accent), #7E7E58 olive (surfaces + pattern), #161614 off-black (base).
+      // The tile.* hues come from the Bauhaus reference and are used ONLY inside
+      // the geometric pattern, never on UI controls.
       colors: {
-        accent: { DEFAULT: '#dec18c', hover: '#c9a86e' },
-        ink: { DEFAULT: '#2a2820', deep: '#1f1f21' },
-        body: '#5e584b',
-        muted: { DEFAULT: '#9a9485', 2: '#8a8375' },
-        paper: { DEFAULT: '#f6f3ec', 2: '#f2f0ea' },
-        hero: '#20180f',
-        forest: { DEFAULT: '#26302a', text: '#f2ede2' },
-        footer: { bg: '#1c241d', text: '#dfd9cc' },
-        line: { DEFAULT: 'rgba(42, 40, 32, 0.14)', input: 'rgba(42, 40, 32, 0.24)' },
+        bg: '#161614',
+        surface: { DEFAULT: '#1E1E1B', 2: '#26261F' },
+        fg: { DEFAULT: '#F1EFE8', muted: '#B4B2A6', subtle: '#8F8D81' },
+        accent: { DEFAULT: '#EF4A2B', hover: '#F3664A' },
+        olive: { DEFAULT: '#7E7E58', deep: '#34342A' },
+        line: { DEFAULT: 'rgba(241, 239, 232, 0.12)', strong: 'rgba(241, 239, 232, 0.24)' },
+        tile: { slate: '#5E6E73', brown: '#8A4B2E', mustard: '#C9A63A' },
       },
       fontFamily: {
-        sans: ['Hanken Grotesk', 'sans-serif'],
-        serif: ['Newsreader', 'serif'],
-        // Display headings and base/large body copy, per the redesign.
-        inter: ['Inter', 'Hanken Grotesk', 'sans-serif'],
+        sans: ['"Outfit Variable"', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
         wrap: '1280px',
       },
       spacing: {
-        gutter: 'clamp(24px, 5vw, 80px)',
+        gutter: 'clamp(16px, 5vw, 80px)',
+      },
+      zIndex: {
+        // Layer scale: sticky header, then the floating WhatsApp button.
+        header: '40',
+        float: '50',
       },
     },
   },
