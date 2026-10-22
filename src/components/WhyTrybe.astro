@@ -22,11 +22,13 @@ import ImageSlot from "./ImageSlot.astro";
       <!-- 1. Transit, the headline benefit: tall feature cell -->
       <article class="md:col-span-2 lg:row-span-2 bg-surface flex flex-col" data-reveal>
         <ImageSlot
+          src="/assets/walkway-usj7.webp"
           alt="Covered walkway leading to the USJ7 LRT-BRT interchange station"
           ratio="16/10"
           need="covered walkway to USJ7 LRT-BRT station, 1600x1000"
           tiles={["t-hstripes", "t-half", "t-circle", "t-arcs", "t-stripes", "t-quarter"]}
           cols={6}
+          class="[&_figcaption]:px-7 lg:[&_figcaption]:px-9 [&_figcaption]:pt-1"
         />
         <div class="p-7 lg:p-9 flex flex-col gap-3 mt-auto">
           <Icon name="ph:train-simple" class="w-8 h-8 text-accent" aria-hidden="true" />
@@ -49,11 +51,13 @@ import ImageSlot from "./ImageSlot.astro";
       <!-- 3. Township: image cell -->
       <article class="bg-surface flex flex-col" data-reveal style="--i:2">
         <ImageSlot
+          src="/assets/sjx-aerial.webp"
           alt="Aerial view of the Subang Jaya Xchange TOD township plan"
           ratio="4/3"
           need="aerial of SJX township, 1200x900"
           tiles={["t-circle", "t-lattice", "t-dots", "t-split"]}
           cols={4}
+          class="[&_figcaption]:px-7 [&_figcaption]:pt-1"
         />
         <div class="p-7 flex flex-col gap-2">
           <h3 class="text-[20px] font-semibold leading-[1.2]">The largest TOD township plan</h3>
