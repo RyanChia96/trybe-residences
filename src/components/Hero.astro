@@ -3,58 +3,55 @@ import { Icon } from "astro-icon/components";
 import { ctaLabel, registerMessage, waLink } from "../config/site";
 ---
 
-<!-- Full-bleed feature hero: the towers render fills the first screen and
-     the copy sits over a dark scrim on the left. The text here is white
-     because it sits on the photo, not on the light page. -->
-<section id="hero-media" class="relative">
-  <div class="relative min-h-[max(640px,calc(100dvh-112px))] flex items-end overflow-hidden">
-    <img
-      src="/assets/hero-towers.webp"
-      alt="USJ 7 Residences, a new launch freehold condo at Subang Jaya Xchange near USJ7 LRT, at sunset"
-      width="2000"
-      height="1125"
-      fetchpriority="high"
-      decoding="async"
-      class="absolute inset-0 w-full h-full object-cover object-[60%_50%] hero-zoom"
-    />
-    <!-- Scrims: left for the copy, bottom to blend into the page. -->
-    <div
-      class="absolute inset-0 bg-[linear-gradient(90deg,rgba(22,22,20,0.92)_0%,rgba(22,22,20,0.7)_32%,rgba(22,22,20,0.1)_62%,rgba(22,22,20,0)_100%)] max-lg:bg-[linear-gradient(0deg,rgba(22,22,20,0.96)_0%,rgba(22,22,20,0.82)_55%,rgba(22,22,20,0.2)_85%)]"
-      aria-hidden="true"
-    ></div>
-
-    <div class="relative w-full max-w-wrap mx-auto px-gutter pb-14 lg:pb-20 pt-24 text-white">
-      <div class="flex flex-col items-start gap-7 hero-in">
-        <p class="text-[13px] font-semibold uppercase tracking-[0.2em] text-white/85">
-          USJ 7 Residences · Phase 2 now launching
-        </p>
-        <h1
-          class="text-[clamp(48px,8vw,124px)] font-semibold leading-[0.95] tracking-[-0.035em] text-white [text-shadow:0_2px_30px_rgba(22,22,20,0.45)]"
+<!-- Split hero: copy on the light page at left, the towers render on the
+     right as a rounded panel. Calm and editorial rather than full-bleed. -->
+<section id="hero-media" class="px-gutter pt-8 pb-16 lg:pt-12 lg:pb-24">
+  <div
+    class="max-w-wrap mx-auto grid gap-10 lg:gap-16 lg:grid-cols-[1fr_1.05fr] items-center"
+  >
+    <div class="flex flex-col items-start gap-7 hero-in max-lg:order-2">
+      <p class="text-[13px] font-semibold uppercase tracking-[0.2em] text-fg-subtle">
+        USJ 7 Residences · Phase 2 now launching
+      </p>
+      <h1 class="text-[clamp(44px,6vw,92px)] font-semibold leading-[0.98] tracking-[-0.035em]">
+        <span class="block whitespace-nowrap">Subang Jaya's</span><span class="block whitespace-nowrap text-accent">new beat.</span>
+      </h1>
+      <p class="text-[clamp(17px,1.4vw,20px)] leading-[1.6] text-fg-muted max-w-[42ch]">
+        Freehold 2 and 3-bedroom homes at Subang Jaya Xchange, the largest TOD
+        township plan, walkway-linked to <span class="whitespace-nowrap">USJ7 LRT-BRT.</span>
+      </p>
+      <div class="flex flex-wrap gap-3 pt-1">
+        <a
+          href={waLink(registerMessage)}
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+          class="btn-primary"
         >
-          <span class="block whitespace-nowrap">Subang Jaya's</span><span class="block whitespace-nowrap text-accent-bright">new beat.</span>
-        </h1>
-        <p class="text-[clamp(17px,1.5vw,21px)] leading-[1.55] text-white/90 max-w-[46ch]">
-          Freehold 2 and 3-bedroom homes at Subang Jaya Xchange, the largest TOD
-          township plan, walkway-linked to <span class="whitespace-nowrap">USJ7 LRT-BRT.</span>
-        </p>
-        <div class="flex flex-wrap gap-3 pt-1">
-          <a
-            href={waLink(registerMessage)}
-            target="_blank"
-            rel="nofollow noopener noreferrer"
-            class="btn-primary"
-          >
-            <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5 text-white" aria-hidden="true" />
-            {ctaLabel}
-          </a>
-          <a href="#residences" class="btn border border-white/60 text-white bg-black/20 backdrop-blur-sm hover:border-white">
-            View Layouts
-            <Icon name="ph:arrow-right" class="w-4 h-4" aria-hidden="true" />
-          </a>
-        </div>
+          <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5 text-white" aria-hidden="true" />
+          {ctaLabel}
+        </a>
+        <a href="#residences" class="btn-ghost">
+          View Layouts
+          <Icon name="ph:arrow-right" class="w-4 h-4" aria-hidden="true" />
+        </a>
       </div>
     </div>
 
-    <p class="absolute right-gutter top-4 lg:top-auto lg:bottom-5 text-[12px] text-white/75">Artist's impression</p>
+    <figure class="relative max-lg:order-1 hero-in" style="--i:1">
+      <div class="overflow-hidden rounded-[28px] lg:rounded-[36px] aspect-[4/3] lg:aspect-auto lg:h-[clamp(520px,calc(100dvh-200px),720px)] bg-surface-2">
+        <img
+          src="/assets/hero-towers.webp"
+          alt="USJ 7 Residences, a new launch freehold condo at Subang Jaya Xchange near USJ7 LRT, at sunset"
+          width="2000"
+          height="1125"
+          fetchpriority="high"
+          decoding="async"
+          class="w-full h-full object-cover object-[62%_50%] hero-zoom"
+        />
+      </div>
+      <figcaption class="absolute left-4 bottom-4 rounded-full bg-black/45 backdrop-blur-sm px-3 py-1 text-[12px] text-white">
+        Artist's impression
+      </figcaption>
+    </figure>
   </div>
 </section>
