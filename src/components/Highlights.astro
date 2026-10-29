@@ -10,11 +10,11 @@ import ImageSlot from "./ImageSlot.astro";
   <div class="max-w-wrap mx-auto">
     <div class="max-w-[640px] mb-10 lg:mb-14" data-reveal>
       <h2 class="text-[clamp(32px,4vw,52px)] font-semibold leading-[1.05] tracking-[-0.02em]">
-        Why Trybe
+        Why USJ 7 Residences
       </h2>
       <p class="mt-4 text-[17px] leading-[1.6] text-fg-muted max-w-[52ch]">
-        A freehold address on a train interchange, with layouts you can open up
-        as your household changes.
+        A freehold service apartment in Subang Jaya, on a train interchange,
+        with 2 and 3-bedroom layouts you can open up as your household changes.
       </p>
     </div>
 
@@ -26,8 +26,6 @@ import ImageSlot from "./ImageSlot.astro";
           alt="Covered walkway leading to the USJ7 LRT-BRT interchange station"
           ratio="16/10"
           need="covered walkway to USJ7 LRT-BRT station, 1600x1000"
-          tiles={["t-hstripes", "t-half", "t-circle", "t-arcs", "t-stripes", "t-quarter"]}
-          cols={6}
           class="[&_figcaption]:px-7 lg:[&_figcaption]:px-9 [&_figcaption]:pt-1"
         />
         <div class="p-7 lg:p-9 flex flex-col gap-3 mt-auto">
@@ -42,10 +40,10 @@ import ImageSlot from "./ImageSlot.astro";
         </div>
       </article>
 
-      <!-- 2. Freehold: olive cell, large type only (olive needs 18px+ for AA) -->
-      <article class="bg-olive p-7 flex flex-col justify-between gap-6" data-reveal style="--i:1">
-        <Icon name="ph:seal-check" class="w-8 h-8 text-bg" aria-hidden="true" />
-        <h3 class="text-[26px] font-semibold leading-[1.1] text-bg">Freehold service apartment</h3>
+      <!-- 2. Freehold: the one red cell (white on #CF2F25 is 5.1:1) -->
+      <article class="bg-accent p-7 flex flex-col justify-between gap-6" data-reveal style="--i:1">
+        <Icon name="ph:seal-check" class="w-8 h-8 text-white" aria-hidden="true" />
+        <h3 class="text-[26px] font-semibold leading-[1.1] text-white">Freehold service apartment</h3>
       </article>
 
       <!-- 3. Township: image cell -->
@@ -55,8 +53,6 @@ import ImageSlot from "./ImageSlot.astro";
           alt="Aerial view of the Subang Jaya Xchange TOD township plan"
           ratio="4/3"
           need="aerial of SJX township, 1200x900"
-          tiles={["t-circle", "t-lattice", "t-dots", "t-split"]}
-          cols={4}
           class="[&_figcaption]:px-7 [&_figcaption]:pt-1"
         />
         <div class="p-7 flex flex-col gap-2">
@@ -79,11 +75,10 @@ import ImageSlot from "./ImageSlot.astro";
         </div>
       </article>
 
-      <!-- 5. GreenRE: pattern cell -->
-      <article class="relative overflow-hidden bg-bg border border-line p-7 flex flex-col justify-end gap-3 min-h-[220px]" data-reveal>
-        <div class="absolute -top-10 -right-10 w-40 h-40 tile t-leaf rounded-full" aria-hidden="true"></div>
-        <Icon name="ph:plant" class="relative w-8 h-8 text-accent" aria-hidden="true" />
-        <h3 class="relative text-[20px] font-semibold leading-[1.2]">GreenRE Silver certification*</h3>
+      <!-- 5. GreenRE: outlined cell -->
+      <article class="bg-bg border border-line p-7 flex flex-col justify-end gap-3 min-h-[220px]" data-reveal>
+        <Icon name="ph:plant" class="w-8 h-8 text-accent" aria-hidden="true" />
+        <h3 class="text-[20px] font-semibold leading-[1.2]">GreenRE Silver certification*</h3>
       </article>
 
       <!-- 6. Speed-ramp car park -->
@@ -92,15 +87,14 @@ import ImageSlot from "./ImageSlot.astro";
         <h3 class="text-[20px] font-semibold leading-[1.2]">Speed-ramp car park for easy access</h3>
       </article>
 
-      <!-- 7. Highways: wide cell with stripe accent -->
-      <article class="md:col-span-2 bg-surface grid grid-cols-[1fr_auto]" data-reveal style="--i:2">
-        <div class="p-7 lg:p-9 flex flex-col justify-end gap-3">
+      <!-- 7. Highways: wide cell -->
+      <article class="md:col-span-2 bg-surface-2" data-reveal style="--i:2">
+        <div class="h-full p-7 lg:p-9 flex flex-col justify-end gap-3">
           <Icon name="ph:road-horizon" class="w-8 h-8 text-accent" aria-hidden="true" />
           <h3 class="text-[clamp(22px,2vw,28px)] font-semibold leading-[1.15]">
             Connected to KESAS, LDP, NPE and ELITE
           </h3>
         </div>
-        <div class="w-[clamp(72px,9vw,128px)] t-stripes" aria-hidden="true"></div>
       </article>
     </div>
 

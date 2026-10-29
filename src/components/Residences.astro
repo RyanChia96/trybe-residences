@@ -11,7 +11,6 @@ const units = [
     baths: "2 bathrooms",
     parking: "1 to 2 car park bays",
     plan: "/assets/floorplan-type-a-blur.webp",
-    tiles: ["t-quarter", "t-dots", "t-leaf", "t-split"],
   },
   {
     name: "Type B / B-M",
@@ -20,7 +19,6 @@ const units = [
     baths: "2 bathrooms",
     parking: "2 car park bays",
     plan: "/assets/floorplan-type-b-blur.webp",
-    tiles: ["t-circle", "t-lattice", "t-moon", "t-stripes"],
   },
 ];
 ---
@@ -29,7 +27,7 @@ const units = [
   <div class="max-w-wrap mx-auto">
     <div class="max-w-[720px] mb-10 lg:mb-14" data-reveal>
       <h2 class="text-[clamp(32px,4vw,52px)] font-semibold leading-[1.05] tracking-[-0.02em]">
-        Two layouts, both with a hackable wall
+        2 and 3-bedroom layouts, both with a hackable wall
       </h2>
       <p class="mt-4 text-[17px] leading-[1.6] text-fg-muted max-w-[56ch]">
         Remove the marked wall to open the living hall, or keep it for an
@@ -48,8 +46,6 @@ const units = [
                 alt={`${u.name} floor plan preview, ${u.size} sqft (blurred, full plan on request)`}
                 ratio="8/5"
                 need={`${u.name} floor plan, 1600x1200`}
-                tiles={u.tiles}
-                cols={4}
                 impression={false}
               />
             </div>

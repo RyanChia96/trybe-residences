@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
   html {
     scroll-behavior: smooth;
@@ -23,75 +23,19 @@
 }
 
 @layer components {
-  /* Buttons. Labels are off-black on vermilion: white on #EF4A2B is only 3.7:1. */
+  /* Buttons. White on #CF2F25 is 5.1:1. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2.5 whitespace-nowrap px-7 py-4 text-[15px] font-semibold tracking-[0.02em] transition-[background-color,color,transform] duration-200 active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2.5 whitespace-nowrap px-7 py-4 text-[15px] font-semibold tracking-[0.02em] transition-[background-color,color,border-color,transform] duration-200 active:scale-[0.98];
   }
   .btn-primary {
-    @apply btn bg-accent text-bg hover:bg-accent-hover;
+    @apply btn bg-accent text-white hover:bg-accent-hover;
   }
   .btn-ghost {
     @apply btn border border-line-strong text-fg hover:border-fg;
   }
-
-  /* ---------------------------------------------------------------------
-     Bauhaus tiles. Each is one geometric primitive (circle, half, quarter,
-     stripes, lattice, arcs, leaf) built from CSS gradients, sized by its
-     container. Used by PatternBand and as the stand-in for images that have
-     not been supplied yet.
-     --------------------------------------------------------------------- */
-  .tile {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 1;
-  }
-  .t-circle {
-    background: radial-gradient(circle at 50% 50%, theme(colors.bg) 0 33%, transparent 34%),
-      theme(colors.olive.DEFAULT);
-  }
-  .t-half {
-    background: radial-gradient(circle at 50% 100%, theme(colors.accent.DEFAULT) 0 49%, transparent 50%),
-      theme(colors.tile.slate);
-  }
-  .t-quarter {
-    background: radial-gradient(circle at 0 100%, theme(colors.tile.mustard) 0 70%, transparent 71%),
-      theme(colors.bg);
-  }
-  .t-stripes {
-    background: repeating-linear-gradient(90deg, theme(colors.accent.DEFAULT) 0 12.5%, theme(colors.tile.brown) 12.5% 25%);
-  }
-  .t-hstripes {
-    background: repeating-linear-gradient(0deg, theme(colors.accent.DEFAULT) 0 10%, theme(colors.tile.slate) 10% 20%);
-  }
-  .t-lattice {
-    background: repeating-linear-gradient(45deg, theme(colors.bg) 0 4%, transparent 4% 12%),
-      repeating-linear-gradient(-45deg, theme(colors.bg) 0 4%, transparent 4% 12%),
-      theme(colors.olive.DEFAULT);
-  }
-  .t-arcs {
-    background: repeating-radial-gradient(circle at 100% 100%, theme(colors.bg) 0 6%, theme(colors.tile.slate) 6% 12%);
-  }
-  .t-dots {
-    background: radial-gradient(circle, theme(colors.olive.DEFAULT) 0 38%, transparent 39%) 0 0 / 50% 50%,
-      theme(colors.tile.brown);
-  }
-  .t-split {
-    background: linear-gradient(135deg, theme(colors.tile.mustard) 50%, theme(colors.bg) 50%);
-  }
-  .t-leaf {
-    background: theme(colors.olive.DEFAULT);
-  }
-  .t-leaf::before {
-    content: "";
-    position: absolute;
-    inset: 16%;
-    background: theme(colors.accent.DEFAULT);
-    border-radius: 0 100%;
-  }
-  .t-moon {
-    background: radial-gradient(circle at 70% 50%, theme(colors.tile.slate) 0 36%, transparent 37%),
-      radial-gradient(circle at 50% 50%, theme(colors.fg.DEFAULT) 0 40%, transparent 41%),
-      theme(colors.tile.brown);
+  /* For use on the red offer band and the dark hero photo. */
+  .btn-light {
+    @apply btn bg-white text-accent hover:bg-surface;
   }
 }
 
@@ -131,16 +75,6 @@
   @keyframes hero-zoom {
     from {
       transform: scale(1.06);
-    }
-  }
-
-  /* The single marquee on the page: the pattern band under the hero. */
-  .band-track {
-    animation: band 70s linear infinite;
-  }
-  @keyframes band {
-    to {
-      transform: translateX(-50%);
     }
   }
 }

@@ -1,15 +1,12 @@
 ---
-// An image, or (until the generated renders arrive) a Bauhaus tile
-// composition at the same aspect ratio so the layout does not shift when the
-// real file is dropped in. To fill a slot: put the file in /public/assets and
-// pass `src`.
+// An image at a fixed aspect ratio, so the layout does not shift while it
+// loads. Without `src` it renders a plain surface panel and a TODO comment,
+// so a missing image is obvious in review but never breaks the layout.
 interface Props {
   src?: string;
   alt: string;
   ratio: string; // e.g. "4/5"
   need: string; // what the missing image should be, for the TODO list
-  tiles?: string[];
-  cols?: number;
   impression?: boolean;
   eager?: boolean;
   fit?: "cover" | "contain";
@@ -20,8 +17,6 @@ const {
   alt,
   ratio,
   need,
-  tiles = ["t-circle", "t-quarter", "t-stripes", "t-leaf", "t-arcs", "t-split"],
-  cols = 3,
   impression = true,
   eager = false,
   fit = "cover",
@@ -44,17 +39,7 @@ const {
     ) : (
       <>
         <Fragment set:html={`<!-- TODO image: ${need} -->`} />
-        <div
-          role="img"
-          aria-label={alt}
-          class="w-full grid overflow-hidden content-start bg-olive-deep"
-          style={`aspect-ratio:${ratio};grid-template-columns:repeat(${cols},1fr)`}
-        >
-          {Array.from({ length: cols * 6 }, (_, i) => (
-            // Shift each row by 3 so no column repeats the same tile.
-            <div class:list={["tile", tiles[(i + Math.floor(i / cols) * 3) % tiles.length]]} />
-          ))}
-        </div>
+        <div role="img" aria-label={alt} class="w-full bg-surface-2" style={`aspect-ratio:${ratio}`} />
       </>
     )
   }

@@ -5,20 +5,21 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 import { project, agency, agent, site, independenceNotice } from "../config/site";
 
 const title =
-  "Trybe Residences Subang Jaya | New Launch TOD Condo at USJ7 LRT-BRT";
-const description = `Hype 2 (Trybe) Residences Phase 2 at Subang Jaya Xchange, Subang Jaya's largest TOD township plan. Freehold 2 to 3-bedroom homes from 730 sqft, with a covered walkway to the USJ7 LRT-BRT interchange. Marketed by ${agent.name} (${agent.ren}), ${agency.name}.`;
+  "USJ 7 Residences | New Launch Condo Near USJ7 LRT, Subang Jaya";
+const description = `New launch freehold condo at Subang Jaya Xchange with a covered walkway to USJ7 LRT-BRT. 2 and 3-bedroom homes from 730 sqft. Marketed by ${agent.name} (${agent.ren}), ${agency.name}.`;
 const ogImage = `${site.url}/assets/og-image.jpg`;
 
 const apartmentComplex = {
   "@context": "https://schema.org",
   "@type": "ApartmentComplex",
   name: project.officialName,
-  alternateName: [project.name, "Hype 2 Residences"],
   description:
     "Phase 2 of a freehold service apartment at Subang Jaya Xchange (SJX), USJ7, Subang Jaya, with a covered walkway to the USJ7 LRT-BRT interchange station. 2 to 3-bedroom flexi layouts of 730 and 920 sqft with hackable walls.",
   url: `${site.url}/`,
   image: ogImage,
   numberOfBedrooms: "2-3",
+  containedInPlace: { "@type": "Place", name: "Subang Jaya Xchange (SJX), USJ7, Subang Jaya" },
+  keywords: "new launch condo Subang Jaya, TOD condo Subang Jaya, condo near USJ7 LRT, freehold service apartment Subang Jaya",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Subang Jaya Xchange (SJX), USJ 7",
@@ -68,7 +69,7 @@ const realEstateAgent = {
     addressRegion: "Selangor",
     addressCountry: "MY",
   },
-  knowsAbout: "Trybe Residences and new launch TOD homes in Subang Jaya",
+  knowsAbout: "USJ 7 Residences and new launch TOD homes in Subang Jaya",
 };
 ---
 
@@ -77,7 +78,7 @@ const realEstateAgent = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#161614" />
+    <meta name="theme-color" content="#FAFAF9" />
     <link rel="icon" type="image/svg+xml" href="/assets/trybe-logo.svg" />
     <script is:inline>document.documentElement.classList.add("js");</script>
 
@@ -86,7 +87,7 @@ const realEstateAgent = {
     <meta name="description" content={description} />
     <meta
       name="keywords"
-      content="Subang Jaya new launch, TOD Subang Jaya, USJ7 LRT BRT condo, freehold service apartment Subang Jaya, Trybe Residences, Hype 2 Subang Jaya, Subang Jaya Xchange, SJX, largest TOD township Subang Jaya"
+      content="USJ 7 Residences, USJ7 Residences, USJ 7 Residences Subang Jaya, USJ 7 Residences price, USJ 7 Residences floor plan, new launch condo Subang Jaya, new condo Subang Jaya 2026, new launch USJ, USJ7 condo, USJ new property, Subang Jaya Xchange, SJX Subang Jaya, SJX residences, condo near USJ7 LRT, USJ7 LRT BRT condo, TOD condo Subang Jaya, transit-oriented development Subang Jaya, condo near LRT Kelana Jaya line, condo near BRT Sunway line, condo with covered walkway to LRT, freehold service apartment Subang Jaya, freehold condo Subang Jaya, 2 bedroom condo Subang Jaya, 3 bedroom condo USJ, early bird property promotion Subang Jaya, condo near Sunway Pyramid, condo near Sunway University, condo near Monash University Malaysia, condo near Taylor's University, condo near SEGi Subang, condo near Summit USJ, condo near Subang Airport, rumah baru Subang Jaya, kondo pegangan bebas Subang Jaya, kondo dekat LRT USJ7, 梳邦再也新楼盘, 梳邦再也公寓, USJ7轻快铁公寓"
     />
     <meta name="robots" content="index, follow" />
     <meta name="author" content={`${agent.name}, ${agent.ren}`} />
@@ -94,7 +95,7 @@ const realEstateAgent = {
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Trybe Residences, Subang Jaya" />
+    <meta property="og:site_name" content="USJ 7 Residences, Subang Jaya" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />

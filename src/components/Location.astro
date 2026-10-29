@@ -18,8 +18,8 @@ const lines = [
   },
   {
     name: "BRT Sunway Line",
-    dot: "bg-olive",
-    rail: "bg-olive",
+    dot: "bg-fg",
+    rail: "bg-fg",
     stops: [
       { code: "SB5", name: "SunU-Monash", note: "Monash, Sunway University" },
       { code: "SB4", name: "SunMed", note: "Sunway Medical, Taylor's College" },
@@ -111,11 +111,11 @@ const groups = [
   <div class="max-w-wrap mx-auto">
     <div class="max-w-[720px] mb-10 lg:mb-14" data-reveal>
       <h2 class="text-[clamp(32px,4vw,52px)] font-semibold leading-[1.05] tracking-[-0.02em]">
-        On the line to KL Sentral and Sunway
+        A TOD condo on the USJ7 LRT and BRT lines
       </h2>
       <p class="mt-4 text-[17px] leading-[1.6] text-fg-muted max-w-[56ch]">
-        USJ7 is an interchange: board the Kelana Jaya LRT towards KLCC, or the
-        Sunway BRT towards Sunway Pyramid, from one station.
+        From one station, take the Kelana Jaya LRT to KL Sentral and KLCC, or
+        the Sunway BRT to Sunway Pyramid, Sunway University and Monash.
       </p>
     </div>
 
@@ -154,12 +154,10 @@ const groups = [
     <div class="grid gap-10 lg:gap-14 lg:grid-cols-[1.1fr_1fr] items-start">
       <ImageSlot
         src="/assets/location-map-usj7.webp"
-        alt="Location map of Trybe Residences beside USJ7 Station on the LRT and BRT lines, between KESAS, ELITE and the LDP"
+        alt="Location map of USJ 7 Residences beside USJ7 Station on the LRT and BRT lines, between KESAS, ELITE and the LDP"
         ratio="1140/1080"
         fit="contain"
         need="location map (Subang Jaya, USJ7 Station, KESAS, LDP), 1140x1080"
-        tiles={["t-lattice", "t-circle", "t-arcs", "t-quarter"]}
-        cols={4}
         impression={false}
       />
 

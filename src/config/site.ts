@@ -4,17 +4,18 @@
 // apart. Edit here, not in the components.
 
 // ---------------------------------------------------------------------------
-// This site markets Phase 2 of Hype 2 (Trybe) Residences at Subang Jaya
-// Xchange (SJX). Naming the project was approved by the operator on
-// 22 Oct 2026. It is still operated by a licensed estate agency, not the
-// developer, and is clearly disclosed as such.
+// This site markets Phase 2 of USJ 7 Residences at Subang Jaya Xchange (SJX).
+// The client asked on 29 Oct 2026 for this name in place of the developer's
+// "Hype 2 (Trybe)" branding, so that branding no longer appears on the site.
+// It is still operated by a licensed estate agency, not the developer, and is
+// clearly disclosed as such.
 // ---------------------------------------------------------------------------
 
 export const project = {
-  name: "Trybe Residences",
-  officialName: "Hype 2 (Trybe) Residences, Subang Jaya Xchange",
-  wordmarkTop: "TRYBE",
-  wordmarkBottom: "HYPE 2 RESIDENCES",
+  name: "USJ 7 Residences",
+  officialName: "USJ 7 Residences, Subang Jaya Xchange",
+  wordmarkTop: "USJ 7",
+  wordmarkBottom: "RESIDENCES",
   township: "Subang Jaya Xchange (SJX)",
   locality: "USJ7, Subang Jaya",
   tagline: "Phase 2 now launching at Subang Jaya Xchange, USJ7",
