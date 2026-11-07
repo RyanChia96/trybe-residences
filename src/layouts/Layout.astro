@@ -2,6 +2,7 @@
 import "@fontsource-variable/outfit";
 import "../styles/global.css";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import Analytics from "@vercel/analytics/astro";
 import { project, agency, agent, site, independenceNotice } from "../config/site";
 
 const title =
@@ -121,6 +122,9 @@ const realEstateAgent = {
 
     <!-- ============ Speed Insights ============ -->
     <SpeedInsights />
+
+    <!-- ============ Web Analytics ============ -->
+    <Analytics />
   </head>
   <body id="top">
     <slot />
