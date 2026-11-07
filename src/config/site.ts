@@ -34,14 +34,22 @@ export const agent = {
   name: "Chloe Tan",
   ren: "REN 65782",
   role: "Registered Real Estate Negotiator",
-  phoneDisplay: "+60 13-402 2862",
-  phoneHref: "+60134022862",
-  whatsapp: "60134022862",
+  phoneDisplay: "+60 16-905 4333",
+  phoneHref: "+60169054333",
+  whatsapp: "60169054333",
   email: "jiaweii927@gmail.com",
 };
 
 export const site = {
   url: "https://www.subangjayabiggesttodtownship.com.my",
+};
+
+/** Google tags. Leave "" to omit the tag from the page. */
+export const analytics = {
+  // GA4 measurement ID, e.g. "G-XXXXXXXXXX".
+  ga4Id: "G-7ZR11KLTZJ",
+  // Search Console HTML-tag token: the content="..." value only.
+  gscVerification: "",
 };
 
 /** One-line attribution used in the header bar. */

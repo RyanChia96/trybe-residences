@@ -1,0 +1,32 @@
+---
+// Google Search Console verification and GA4, both driven by
+// `analytics` in src/config/site.ts. Each renders nothing until its ID is set.
+import { analytics } from "../config/site";
+const { ga4Id, gscVerification } = analytics;
+---
+
+{gscVerification && <meta name="google-site-verification" content={gscVerification} />}
+
+{
+  ga4Id && (
+    <>
+      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`} />
+      <script is:inline define:vars={{ ga4Id }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        window.gtag = gtag;
+        gtag("js", new Date());
+        gtag("config", ga4Id);
+
+        // Every enquiry goes through WhatsApp, so a WhatsApp click is the lead.
+        // Mark generate_lead as a key event in GA4 to import it into Google Ads.
+        document.addEventListener("click", (e) => {
+          const a = e.target.closest && e.target.closest('a[href^="https://wa.me/"]');
+          if (a) gtag("event", "generate_lead", { method: "whatsapp", link_url: a.href });
+        });
+      </script>
+    </>
+  )
+}
