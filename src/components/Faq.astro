@@ -2,22 +2,31 @@
 import { Icon } from "astro-icon/components";
 import { project, agency, agent } from "../config/site";
 
-const faqs = [
+const faqs: { q: string; a: string; lang?: string }[] = [
   {
     q: `What is ${project.name}?`,
     a: `${project.name} is a freehold service apartment at Subang Jaya Xchange (SJX) in USJ7, Subang Jaya. Phase 1 is fully sold and Phase 2 is now open for registration.`,
   },
   {
     q: "Where exactly is it located?",
-    a: "At Subang Jaya Xchange in USJ7, Subang Jaya, about 400m from the USJ7 LRT-BRT interchange station by covered walkway, with access to the KESAS, LDP, NPE and ELITE highways.",
+    a: "At Subang Jaya Xchange in USJ7, Subang Jaya, about 400m from the USJ 7 LRT-BRT interchange station by covered walkway, with access to the KESAS, LDP, NPE and ELITE highways.",
   },
   {
-    q: "Which train lines can I take from USJ7?",
+    q: "Which train lines can I take from USJ 7 LRT station?",
     a: "USJ7 is an interchange for the LRT Kelana Jaya Line, which runs to SS15, KL Sentral and KLCC, and the BRT Sunway Line, which serves Sunway University, Sunway Medical Centre and Sunway Pyramid.",
   },
   {
     q: "Is this a new launch condo in Subang Jaya?",
     a: `Yes. ${project.name} is a new launch at Subang Jaya Xchange in USJ7. Phase 1 is fully sold and Phase 2 is open for registration now, with an early bird promotion for the first 50 purchasers.`,
+  },
+  {
+    q: "How far is it from USJ 7 LRT station?",
+    a: "About 400m by covered walkway to the USJ 7 LRT-BRT interchange station, subject to final approval. From there, the Kelana Jaya Line runs to KL Sentral and KLCC, and the BRT Sunway Line runs to Sunway Pyramid.",
+  },
+  {
+    lang: "ms",
+    q: "Adakah ini rumah baru di Subang Jaya?",
+    a: `Ya. ${project.name} ialah kondominium pegangan bebas baharu di Subang Jaya Xchange, kira-kira 400m dari stesen LRT USJ 7 melalui laluan pejalan kaki berbumbung. Fasa 2 kini dibuka untuk pendaftaran.`,
   },
   {
     q: "Is it near Sunway Pyramid, Sunway University and Monash?",
@@ -74,7 +83,7 @@ const faqSchema = {
     <div class="border-t border-line">
       {
         faqs.map((f) => (
-          <details class="group border-b border-line">
+          <details class="group border-b border-line" lang={f.lang}>
             <summary class="flex items-start justify-between gap-6 cursor-pointer list-none py-6 text-[clamp(17px,1.7vw,20px)] font-medium [&::-webkit-details-marker]:hidden">
               {f.q}
               <Icon
