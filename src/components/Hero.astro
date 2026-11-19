@@ -4,12 +4,12 @@ import { ctaLabel, registerMessage, waLink } from "../config/site";
 ---
 
 <!-- The render has a transparent sky, so the towers rise straight out of the
-     page and the copy sits in the open sky to their left. On desktop the image
-     is nudged right (and cropped) to widen that sky; the copy never overlaps
-     the towers. On mobile the copy stacks above a tighter crop. -->
+     page. They sit in the right half of the frame, leaving open sky on the
+     left for the copy on desktop. On mobile the copy stacks above a crop
+     centred on the towers. -->
 <section id="hero-media" class="relative overflow-hidden">
-  <div class="relative z-[1] max-w-wrap mx-auto px-gutter pt-10 xl:pt-14 xl:absolute xl:inset-x-0 xl:top-0">
-    <div class="flex flex-col items-start gap-6 xl:max-w-[min(36vw,560px)] hero-in">
+  <div class="relative z-[1] max-w-wrap mx-auto px-gutter pt-10 lg:pt-14 lg:absolute lg:inset-x-0 lg:top-0">
+    <div class="flex flex-col items-start gap-6 lg:max-w-[min(42vw,580px)] hero-in">
       <p class="text-[13px] font-semibold uppercase tracking-[0.2em] text-fg-subtle">
         USJ 7 Residences · Phase 2 now launching
       </p>
@@ -38,8 +38,8 @@ import { ctaLabel, registerMessage, waLink } from "../config/site";
     </div>
   </div>
 
-  <figure class="relative mt-6 xl:mt-0">
-    <div class="max-xl:aspect-[4/5] max-xl:overflow-hidden sm:max-xl:aspect-[16/11]">
+  <figure class="relative mt-6 lg:mt-0">
+    <div class="max-lg:aspect-[4/5] max-lg:overflow-hidden sm:max-lg:aspect-[16/11]">
       <img
         src="/assets/hero-towers-sky.webp"
         alt="USJ 7 Residences, two freehold towers at Subang Jaya Xchange near USJ7 LRT, rising above a landscaped garden"
@@ -47,7 +47,7 @@ import { ctaLabel, registerMessage, waLink } from "../config/site";
         height="1125"
         fetchpriority="high"
         decoding="async"
-        class="block max-xl:h-full max-xl:w-full max-xl:object-cover max-xl:object-[52%_100%] xl:w-full xl:max-w-[2000px] xl:ml-[16%] xl:[mask-image:linear-gradient(to_right,transparent,#000_20%)] hero-rise"
+        class="block max-lg:h-full max-lg:w-full max-lg:object-cover max-lg:object-[85%_100%] lg:w-full lg:max-w-[2000px] lg:mx-auto hero-rise"
       />
     </div>
     <figcaption class="absolute right-gutter bottom-4 text-[12px] text-white [text-shadow:0_1px_6px_rgba(22,22,20,0.6)]">
