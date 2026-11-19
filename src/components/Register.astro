@@ -1,0 +1,177 @@
+---
+import { Icon } from "astro-icon/components";
+import { project, agency, agent, ctaLabel } from "../config/site";
+
+// The offer and the enquiry live in one section: the saving is the reason to
+// act, the form is how. The form never posts anywhere. On submit it composes
+// a WhatsApp message to the agent, so no personal data reaches this site.
+const layouts = ["Type A, 730 sqft", "Type B, 920 sqft", "Not sure yet"];
+const topics = ["Floor plans", "Indicative pricing", "Early bird availability", "Viewing appointment"];
+---
+
+<section id="register" class="py-20 lg:py-28 px-gutter bg-surface">
+  <span id="offer" class="block -translate-y-24" aria-hidden="true"></span>
+  <div class="max-w-wrap mx-auto grid gap-12 lg:gap-20 lg:grid-cols-[1fr_1.05fr] items-start">
+    <div data-reveal>
+      <p class="text-[13px] font-semibold uppercase tracking-[0.2em] text-accent mb-3">
+        Phase 1 100% sold
+      </p>
+      <p class="text-[clamp(22px,2.2vw,30px)] font-semibold leading-[1.1]">Early birds save up to</p>
+      <p
+        class="text-[clamp(88px,11vw,168px)] font-semibold leading-[0.9] tracking-[-0.05em] text-accent"
+        aria-label="RM80K"
+      >
+        RM80K
+      </p>
+      <h2 class="mt-6 text-[clamp(26px,2.6vw,36px)] font-semibold leading-[1.1] tracking-[-0.015em] max-w-[20ch]">
+        Reserved for the first 50 purchasers in Phase 2
+      </h2>
+      <p class="mt-4 text-[16px] leading-[1.6] text-fg-muted max-w-[46ch]">
+        Offer terms, eligibility and the amount for each unit are set and
+        confirmed by the developer at booking.
+      </p>
+
+      <div class="mt-10 pt-8 border-t border-line flex items-start gap-5">
+        <span
+          class="w-14 h-14 bg-accent text-white flex items-center justify-center flex-none text-[20px] font-semibold"
+          aria-hidden="true">CT</span
+        >
+        <div class="text-[15px] leading-[1.6]">
+          <p class="text-[20px] font-semibold leading-[1.15]">{agent.name}</p>
+          <p class="text-fg-muted">{agent.ren} · {agent.role}</p>
+          <p class="text-fg-muted">{agency.name}, BOVAEP {agency.licence}</p>
+          <p class="mt-3 flex flex-wrap gap-x-6 gap-y-2">
+            <a href={`tel:${agent.phoneHref}`} class="inline-flex items-center gap-2 font-medium hover:text-accent transition-colors duration-200">
+              <Icon name="ph:phone" class="w-4 h-4" aria-hidden="true" />{agent.phoneDisplay}
+            </a>
+            <a href={`mailto:${agent.email}`} class="inline-flex items-center gap-2 font-medium hover:text-accent transition-colors duration-200">
+              <Icon name="ph:envelope-simple" class="w-4 h-4" aria-hidden="true" />{agent.email}
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-bg border border-line p-7 lg:p-10" data-reveal style="--i:1">
+      <h2 class="text-[clamp(26px,2.6vw,36px)] font-semibold leading-[1.1] tracking-[-0.015em]">
+        Register your interest
+      </h2>
+      <p class="mt-3 text-[15px] leading-[1.6] text-fg-muted">
+        Fill this in and we will open WhatsApp with your message ready to send.
+      </p>
+
+      <form
+        id="register-form"
+        class="mt-8 flex flex-col gap-7"
+        data-wa={agent.whatsapp}
+        data-project={project.name}
+        data-agent={agent.name.split(" ")[0]}
+        novalidate
+      >
+        <div class="flex flex-col gap-2">
+          <label for="rf-name" class="text-[14px] font-semibold">Your name</label>
+          <input
+            id="rf-name"
+            name="name"
+            type="text"
+            autocomplete="name"
+            required
+            class="h-12 px-4 bg-bg border border-line-strong text-[16px] text-fg focus:border-fg focus:outline-none"
+            aria-describedby="rf-name-error"
+          />
+          <p id="rf-name-error" class="text-[13px] text-accent" hidden>Please enter your name.</p>
+        </div>
+
+        <fieldset class="flex flex-col gap-3">
+          <legend class="text-[14px] font-semibold mb-3">Layout you are looking at</legend>
+          <div class="flex flex-wrap gap-2">
+            {
+              layouts.map((l, i) => (
+                <label class="cursor-pointer">
+                  <input type="radio" name="layout" value={l} class="peer sr-only" checked={i === 2} />
+                  <span class="inline-flex px-4 py-2.5 text-[14px] font-medium border border-line-strong text-fg-muted transition-colors duration-200 peer-checked:bg-fg peer-checked:text-bg peer-checked:border-fg peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent">
+                    {l}
+                  </span>
+                </label>
+              ))
+            }
+          </div>
+        </fieldset>
+
+        <fieldset class="flex flex-col gap-3">
+          <legend class="text-[14px] font-semibold mb-3">I would like</legend>
+          <div class="grid sm:grid-cols-2 gap-x-6 gap-y-3">
+            {
+              topics.map((t, i) => (
+                <label class="flex items-center gap-3 text-[15px] cursor-pointer">
+                  <input type="checkbox" name="topics" value={t} checked={i < 2} class="w-[18px] h-[18px] accent-[#CF2F25]" />
+                  {t}
+                </label>
+              ))
+            }
+          </div>
+        </fieldset>
+
+        <div class="flex flex-col gap-2">
+          <label for="rf-message" class="text-[14px] font-semibold">Message <span class="font-normal text-fg-muted">(optional)</span></label>
+          <textarea
+            id="rf-message"
+            name="message"
+            rows="3"
+            class="px-4 py-3 bg-bg border border-line-strong text-[16px] text-fg focus:border-fg focus:outline-none resize-y"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary w-full">
+          <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5 text-white" aria-hidden="true" />
+          {ctaLabel}
+        </button>
+      </form>
+
+      <p class="text-[13px] text-fg-subtle leading-[1.6] mt-5">
+        This form does not send your details to this website. It opens
+        WhatsApp with your message, and when you send it, you consent to being
+        contacted by {agent.name} ({agent.ren}) of {agency.name} regarding
+        {project.name}. See our <a href="/privacy" class="underline underline-offset-2 hover:text-accent">Privacy Policy</a>.
+        You may ask us to stop contacting you at any time.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("register-form") as HTMLFormElement | null;
+  if (form) {
+    const name = form.elements.namedItem("name") as HTMLInputElement;
+    const error = document.getElementById("rf-name-error")!;
+    name.addEventListener("input", () => {
+      if (name.value.trim()) {
+        error.hidden = true;
+        name.removeAttribute("aria-invalid");
+      }
+    });
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const who = String(data.get("name") ?? "").trim();
+      if (!who) {
+        error.hidden = false;
+        name.setAttribute("aria-invalid", "true");
+        name.focus();
+        return;
+      }
+      const { wa, project, agent } = form.dataset;
+      const topics = data.getAll("topics").map(String);
+      const message = String(data.get("message") ?? "").trim();
+      const lines = [
+        `Hi ${agent}, I'm ${who}. I'm interested in ${project} Phase 2.`,
+        `Layout: ${data.get("layout")}`,
+        topics.length ? `I would like: ${topics.join(", ")}` : "",
+        message,
+      ].filter(Boolean);
+      const url = `https://wa.me/${wa}?text=${encodeURIComponent(lines.join("\n"))}`;
+      (window as any).gtag?.("event", "generate_lead", { method: "whatsapp_form" });
+      window.open(url, "_blank", "noopener");
+    });
+  }
+</script>
