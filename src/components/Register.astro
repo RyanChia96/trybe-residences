@@ -9,9 +9,24 @@ const layouts = ["Type A, 730 sqft", "Type B, 920 sqft", "Not sure yet"];
 const topics = ["Floor plans", "Indicative pricing", "Early bird availability", "Viewing appointment"];
 ---
 
-<section id="register" class="py-20 lg:py-28 px-gutter bg-surface">
+<section id="register" class="relative overflow-hidden py-20 lg:py-28 px-gutter bg-surface">
   <span id="offer" class="block -translate-y-24" aria-hidden="true"></span>
-  <div class="max-w-wrap mx-auto grid gap-12 lg:gap-20 lg:grid-cols-[1fr_1.05fr] items-start">
+  <!-- Facade close-up as a backdrop. Its open sky sits behind the offer copy;
+       the wash keeps the copy on the busier facade at AA contrast. -->
+  <img
+    src="/assets/cta-facade.webp"
+    alt=""
+    width="2000"
+    height="1125"
+    loading="lazy"
+    decoding="async"
+    class="absolute inset-0 w-full h-full object-cover object-[60%_center]"
+  />
+  <div
+    class="absolute inset-0 bg-bg/85 lg:bg-transparent lg:bg-[linear-gradient(90deg,rgba(250,250,249,0.5)_0%,rgba(250,250,249,0.88)_38%,rgba(250,250,249,0.88)_52%,rgba(250,250,249,0.35)_80%,rgba(250,250,249,0.2)_100%)]"
+    aria-hidden="true"
+  ></div>
+  <div class="relative max-w-wrap mx-auto grid gap-12 lg:gap-20 lg:grid-cols-[1fr_1.05fr] items-start">
     <div data-reveal>
       <p class="text-[13px] font-semibold uppercase tracking-[0.2em] text-accent mb-3">
         Phase 1 100% sold
