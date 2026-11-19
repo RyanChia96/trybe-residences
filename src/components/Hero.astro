@@ -3,22 +3,22 @@ import { Icon } from "astro-icon/components";
 import { ctaLabel, registerMessage, waLink } from "../config/site";
 ---
 
-<!-- Split hero: copy on the light page at left, the towers render on the
-     right as a rounded panel. Calm and editorial rather than full-bleed. -->
-<section id="hero-media" class="px-gutter pt-8 pb-16 lg:pt-12 lg:pb-24">
-  <div
-    class="max-w-wrap mx-auto grid gap-10 lg:gap-16 lg:grid-cols-[1fr_1.05fr] items-center"
-  >
-    <div class="flex flex-col items-start gap-7 hero-in max-lg:order-2">
+<!-- The render has a transparent sky, so the towers rise straight out of the
+     page and the copy sits in the open sky to their left. On desktop the image
+     is nudged right (and cropped) to widen that sky; the copy never overlaps
+     the towers. On mobile the copy stacks above a tighter crop. -->
+<section id="hero-media" class="relative overflow-hidden">
+  <div class="relative z-[1] max-w-wrap mx-auto px-gutter pt-10 xl:pt-14 xl:absolute xl:inset-x-0 xl:top-0">
+    <div class="flex flex-col items-start gap-6 xl:max-w-[min(36vw,560px)] hero-in">
       <p class="text-[13px] font-semibold uppercase tracking-[0.2em] text-fg-subtle">
         USJ 7 Residences · Phase 2 now launching
       </p>
-      <h1 class="text-[clamp(44px,6vw,92px)] font-semibold leading-[0.98] tracking-[-0.035em]">
+      <h1 class="text-[clamp(42px,4.7vw,76px)] font-semibold leading-[0.98] tracking-[-0.035em]">
         <span class="block whitespace-nowrap">Subang Jaya's</span><span class="block whitespace-nowrap text-accent">new beat.</span>
       </h1>
-      <p class="text-[clamp(17px,1.4vw,20px)] leading-[1.6] text-fg-muted max-w-[42ch]">
-        Freehold 2 and 3-bedroom homes at Subang Jaya Xchange, the largest TOD
-        township plan, walkway-linked to <span class="whitespace-nowrap">USJ7 LRT-BRT.</span>
+      <p class="text-[clamp(16px,1.25vw,19px)] leading-[1.6] text-fg-muted max-w-[38ch]">
+        Freehold 2 and 3-bedroom homes at Subang Jaya Xchange, walkway-linked
+        to <span class="whitespace-nowrap">USJ7 LRT-BRT.</span>
       </p>
       <div class="flex flex-wrap gap-3 pt-1">
         <a
@@ -30,28 +30,28 @@ import { ctaLabel, registerMessage, waLink } from "../config/site";
           <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5 text-white" aria-hidden="true" />
           {ctaLabel}
         </a>
-        <a href="#residences" class="btn-ghost">
+        <a href="#residences" class="btn-ghost bg-bg/70">
           View Layouts
           <Icon name="ph:arrow-right" class="w-4 h-4" aria-hidden="true" />
         </a>
       </div>
     </div>
-
-    <figure class="relative max-lg:order-1 hero-in" style="--i:1">
-      <div class="overflow-hidden rounded-[28px] lg:rounded-[36px] aspect-[4/3] lg:aspect-auto lg:h-[clamp(520px,calc(100dvh-200px),720px)] bg-surface-2">
-        <img
-          src="/assets/hero-towers.webp"
-          alt="USJ 7 Residences, a new launch freehold condo at Subang Jaya Xchange near USJ7 LRT, at sunset"
-          width="2000"
-          height="1125"
-          fetchpriority="high"
-          decoding="async"
-          class="w-full h-full object-cover object-[62%_50%] hero-zoom"
-        />
-      </div>
-      <figcaption class="absolute left-4 bottom-4 rounded-full bg-black/45 backdrop-blur-sm px-3 py-1 text-[12px] text-white">
-        Artist's impression
-      </figcaption>
-    </figure>
   </div>
+
+  <figure class="relative mt-6 xl:mt-0">
+    <div class="max-xl:aspect-[4/5] max-xl:overflow-hidden sm:max-xl:aspect-[16/11]">
+      <img
+        src="/assets/hero-towers-sky.webp"
+        alt="USJ 7 Residences, two freehold towers at Subang Jaya Xchange near USJ7 LRT, rising above a landscaped garden"
+        width="2000"
+        height="1125"
+        fetchpriority="high"
+        decoding="async"
+        class="block max-xl:h-full max-xl:w-full max-xl:object-cover max-xl:object-[52%_100%] xl:w-full xl:max-w-[2000px] xl:ml-[16%] xl:[mask-image:linear-gradient(to_right,transparent,#000_20%)] hero-rise"
+      />
+    </div>
+    <figcaption class="absolute right-gutter bottom-4 text-[12px] text-white [text-shadow:0_1px_6px_rgba(22,22,20,0.6)]">
+      Artist's impression
+    </figcaption>
+  </figure>
 </section>

@@ -16,7 +16,9 @@ const links = [
   {identityLine}
 </div>
 
-<header class="sticky top-0 z-header bg-bg/90 backdrop-blur-md border-b border-line">
+<header
+  class="sticky top-0 z-header bg-bg/90 backdrop-blur-md border-b border-line"
+>
   <nav
     class="max-w-wrap mx-auto px-gutter h-[72px] flex items-center justify-between gap-6"
   >
@@ -29,13 +31,18 @@ const links = [
         class="w-10 h-10 flex-none"
       />
       <span class="flex flex-col leading-none">
-        <span class="text-[21px] font-semibold tracking-[0.22em]">{project.wordmarkTop}</span>
-        <span class="hidden sm:block text-[10px] tracking-[0.3em] text-fg-subtle font-medium mt-1"
+        <span class="text-[21px] font-semibold tracking-[0.22em]"
+          >{project.wordmarkTop}</span
+        >
+        <span
+          class="hidden sm:block text-[10px] tracking-[0.3em] text-fg-subtle font-medium mt-1"
           >{project.wordmarkBottom}</span
         >
       </span>
     </a>
-    <div class="flex items-center gap-[clamp(20px,2.6vw,40px)] text-[15px] font-medium">
+    <div
+      class="flex items-center gap-[clamp(20px,2.6vw,40px)] text-[15px] font-medium"
+    >
       {
         links.map((l) => (
           <a
@@ -46,7 +53,9 @@ const links = [
           </a>
         ))
       }
-      <a href="#register" class="btn-primary !px-5 !py-3 !text-[14px]">{ctaLabel}</a>
+      <a href="#register" class="btn-primary !px-5 !py-3 !text-[14px]"
+        >{ctaLabel}</a
+      >
     </div>
   </nav>
 </header>
